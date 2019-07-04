@@ -1,0 +1,72 @@
+Given a number N, check if a number is perfect or not. A number is said to be perfect if sum of all its factors excluding the number itself is equal to the number.
+
+Input:
+First line consists of T test cases. Then T test cases follow .Each test case consists of a number N.
+
+Output:
+For each testcase, in a new line, output in a single line 1 if a number is a perfect number else print 0.
+
+Constraints:
+1 <= T <= 300
+1 <= N <= 1018
+
+Example:
+Input:
+2
+6
+21
+Output:
+1
+0
+
+code:
+SINCE DIVISORS ARE IN PAIRS AM USING SQUARE ROOT
+EG:
+LET US TAKE 16--->1 X 16 =16
+                  2 X 8  =16
+                  4 X 4  =16
+                  8 X 2  =16
+                  16 X 1 =16
+  SO I AM KEEPING SUM=1 INITIALLY AND STARTING FOR LOOP WITH i=2
+  because when i=1 we get 16%i==0 ,THEN  ,1!=16/1 so 16 also gets added up with sum=sum+i+n/i.(TO AVOID THIS START FROM I=2)
+  since 
+  PERFECT NUMBERS ARE THE SUMM OF ITS FACTORS EXCLUDING THE NUMBER(EG: 6 ,ITS FACTORS ARE 1,2,3,6---->(1+2+3)==6 SO ITS A PERFECT NUMBER)
+
+#include<stdio.h>
+#include<math.h>
+
+int main()
+{
+	long long int t;
+	scanf("%lld",&t);
+	long long int n,i,sum=1,temp;
+	while(t--)
+	{
+	    
+	    scanf("%lld",&n);
+	    for(i=2;i<=sqrt(n);i++)
+	    {
+	        if(n%i==0)
+	        {
+	            if(i!=n/i)
+	            {
+	            sum=sum+i+n/i;
+	            }
+	            else
+	            {
+	                sum=sum+i;
+	            }
+	        }
+	    }
+	    
+	    if(sum==n)
+	    {
+	        printf("1\n");
+	    }
+	    else
+	    {
+	        printf("0\n");
+	    }
+	    sum=1;
+	}
+}
