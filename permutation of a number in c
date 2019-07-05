@@ -1,0 +1,73 @@
+Write a program to calculate nPr. nPr represents n permutation r and value of nPr is (n!) / (n-r)!.
+
+Input: 
+The first line of the input contains T denoting the number of testcases. T testcases follow.
+First line of the test case will be the value of n and r respectively.
+
+Output:
+For each test case, in a new line, output will be the value of nPr.
+
+Constraints:
+1 <= T <= 100
+1 <= n,r <= 20
+n >= r
+
+Example:
+Input:
+2
+2 1
+10 4
+Output:
+2
+5040
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+with recursion:
+
+#include <stdio.h>
+
+
+long long int fact(int n)
+{
+    if(n==0)
+    return 1;
+    else
+    return n*fact(n-1);
+}
+long long int npr(int n,int r)
+{
+    return fact(n)/fact(n-r);
+}
+
+
+
+int main()
+{
+	int t;
+	scanf("%d",&t);
+	int p,n,r,output=1,i;
+	while(t--)
+	{
+	    scanf("%d\t%d",&n,&r);
+	    printf("%lld\n",npr(n,r));
+	    
+	}
+	return 0;
+}
