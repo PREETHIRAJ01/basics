@@ -1,0 +1,165 @@
+Given non-zero two integers N and M. The problem is to find the number closest to N and divisible by M. 
+If there are more than one such number, then output the one having maximum absolute value.
+
+Input:
+The first line consists of an integer T i.e number of test cases. T testcases follow. 
+The first and only line of each test case contains two space separated integers N and M.
+
+Output:
+For each testcase, in a new line, print the closest number to N which is also divisible by M.
+
+Constraints: 
+1 <= T <= 100
+-1000 <= N, M <= 1000
+
+Example:
+Input:
+2
+13 4
+-15 6
+Output:
+12
+-18
+
+code:
+
+#include <stdio.h>
+
+int main()
+{
+	 int t;
+	 scanf("%d",&t);
+	 int n,m,close1,close2,quotient; 
+	 while(t--)
+	 {
+	     scanf("%d%d",&n,&m);
+	     quotient=n/m;
+	     
+	     close1 = quotient*m;
+	     if(n*m>0)
+	     {
+	         close2=m*(quotient+1);
+	     }
+	     else
+	     {
+	         close2=m*(quotient-1);
+	     }
+       
+       // THIS IF IS FOR CHECKING WHETHER TWO NUMBERS ARE CLOSEST WITH SAME DISTANCE ,
+       AND IF ITS THERE WE HAVE TO CHECK THE ABS VALUE WHICH IS GREATER
+       
+	     if(abs(n-close1)<abs(n-close2))
+	     {
+	         printf("%d\n",close1);
+	     }
+	     else
+	     {
+	         printf("%d\n",close2);
+	     }
+	    
+	     
+	 } 
+	return 0;
+}
+CODE 2:
+
+int main() {
+	//code
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int n,m;
+    cin>>n>>m;
+    int count1=0,count2=0,result1,result2;
+    int intial1=n;
+    
+    
+    while(intial1%m!=0)
+    {
+        count1++;
+        intial1++;
+    }
+     result1=intial1;
+    int intial2=n;
+    
+    while(intial2%m!=0)
+    {
+        count2++;
+        intial2--;
+    }
+     result2=intial2;
+     
+     if(count1==count2)
+	{
+	    if(abs(result1)>abs(result2))
+	    {
+	        cout<<result1<<endl;
+	    }
+	    else 
+	    cout<<result2<<endl;
+	}
+     
+   else if(count1<count2)
+    {
+        cout<<result1<<endl;
+    }
+    else
+    cout<<result2<<endl;
+	}
+	
+	
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+CODE3:
+
+
+
+
+int t,n,m,i,j,k;
+	scanf("%d",&t);
+	for(i=1;i<=t;i++){
+	   scanf("%d %d",&n,&m);
+            j=n;
+            k=n;
+
+	   while(1){
+	           if(j%m==0 || k%m==0)
+	               break;
+                j=j+1;
+	           k=k-1;
+	       }
+
+	 if(j%m==0 && k%m==0) // IF BOTH ARE DIVISIBLE TO CHECK GREATER VALUE AMONG TWO
+   {
+        if(n>0)
+        {
+                printf("%d",j);
+        }
+        else
+         {
+                printf("%d",k);
+         }
+   }
+
+	 else if( j%m==0)
+   {
+        printf("%d",j);
+	 }
+    else if( k%m==0)
+    {
+        printf("%d",k);
+	 }
+	 printf("\n");
+	 }
+	return 0;
+}
