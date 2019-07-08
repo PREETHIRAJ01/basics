@@ -1,0 +1,54 @@
+code 1:(without optimization)
+
+CONSIDER 10000 WHICH IS 16 IN DECIMAL
+2^4 IS 16
+HERE FOR 16--->BINARY
+               4 3 2 1 0
+               1 0 0 0 0
+I AM USING  COUNT TO GET THE BIT POSITION TO MAKE IT TO BE THE POWER OF 2
+1. IN FIRST FIRST IF I AM CHECKING WHETHER R IS EQUAL TO 1
+IF IT IS AM DOING 2^COUNT
+
+2. IN SECOND IF IAM CHECKING WHETHER R IS EQUAL TO 0
+IF IT IS AM JUST IGNORING AND CONTINUING BY GOING AGAIN TO TOP OF THE LOOP
+                       
+
+
+
+#include <stdio.h>
+#include<math.h>
+
+int main() 
+{
+	int t;
+	scanf("%d",&t);
+	int sum=0,count=0,n,r;
+	while(t--)
+	{
+	    scanf("%d",&n);
+	    while(n!=0)
+	    {
+	        r=n%10;
+	        if(r==1)
+	        {
+	        sum=sum+pow(2,count);
+	        count++;
+	        n=n/10;
+	        }
+	        if(r==0)
+	        {
+	        n=n/10;
+	        count++;
+	        continue;
+	        }
+	        
+	        
+	    }
+	    printf("%d\n",sum);
+	    sum=0;
+	    count=0;
+	    
+	    
+	}
+	return 0;
+}
