@@ -52,3 +52,43 @@ int main()
 	}
 	return 0;
 }
+
+
+code2:(with optimization)
+
+EXPLANATION:
+LET US TAKE AN EXAMPLE N=10000
+UNTILE N IS 0 SECOND WHILE LOOP RUNS
+1. R=0              2.R=0            3. R=0           4.R=0            5=R=1
+   D=0+0*1           D=0+0*2         D=0+0*4         D=0+0*8          D=0+1*16
+   N=1000            N=100           N=10            N=1              N=0
+   BASE=1*2=2       BASE=2*2=4     BASE=4*2=8        BASE=8*2=16      Base=16*2=32
+ LOOP TERMINATES BECAUSE N IS 0
+
+#include <stdio.h>
+#include<math.h>
+
+int main() 
+{
+	 long long int t;
+	scanf("%lld",&t);
+	long long int d=0,base=1,n,r;
+	while(t--)
+	{
+	    scanf("%lld",&n);
+	    while(n!=0)
+	    {
+	        r=n%10;
+	        d=d+r*base;
+	        n=n/10;
+	        base=base*2;
+	        
+	        
+	    }
+	    printf("%lld\n",d);
+	    d=0;
+	    base=1;
+	    
+	}
+	return 0;
+}
