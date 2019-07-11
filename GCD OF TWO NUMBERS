@@ -26,7 +26,9 @@ int main() {
     }
     return 0;
 }
+-------------------------------------------------------------------------
 WITH FUNCTION:
+-----------------------------
 
 int gcd(int ,int);
 int main() 
@@ -52,3 +54,25 @@ int gcd(int p,int q)
             return gcd(p,q-p);
     return p;
 }
+---------------------------------------------------------------------------
+int gcd(int ,int);
+int main() 
+{
+	
+	int t;
+	scanf("%d",&t);
+	while(t--){
+	int a,b;
+	scanf("%d %d",&a,&b);
+	int out;
+	out = gcd(a,b);
+	printf("%d\n",out);
+	}
+	return 0;
+}
+int gcd(int a, int b) 
+{ 
+    if (b == 0) 
+        return a; 
+    return gcd(b, a % b);  
+} 
