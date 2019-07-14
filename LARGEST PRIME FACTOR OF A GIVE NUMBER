@@ -1,0 +1,135 @@
+Given a number N, the task is to find the largest prime factor of that number.
+
+Input:
+The first line of input contains an integer T, denoting the number of test cases. 
+Then T test cases follow. Each test case contains an integer N.
+
+Output:
+For each test case, in a new line, print the largest prime factor of N.
+
+Constraints:
+1 <= T <= 100
+2 <= N <= 1010
+
+Example:
+Input:
+2
+6
+15
+Output:
+3
+5
+
+1.efficient method:
+
+
+#include<stdio.h>
+#include<math.h>
+#include<stdbool.h>
+
+long long int isprime(int p) //THIS FUNCTION IS USED TO CHECK WHETHER IT IS PRIME OR NOT
+{
+    if(p==1)
+    return false;
+    
+    for(int i=2;i<=sqrt(p);i++)
+    {
+        if(p%i==0)
+        return false;
+    }
+    return true;
+}
+long long int maximum(int a,int b)// THIS FUNCTION IS USED TO CHECK THE MAXIMUM OF PRIME FACTORS
+{
+    if(a>b)
+    return a;
+    else
+    return b;
+}
+// SINCE FACTORS APPEAR AS PAIRS(I,N/I)-->
+ EG:
+ 16--> 1  16
+       2   8
+       4   4
+long long int large(int num)// THIS FUNCTION GIVES THE OUTPUT FOR LARGEST PRIME FACTOR
+{
+    int max_factor=2;
+    for(int i=2;i<=sqrt(num);i++)
+    {
+       if(num%i==0)// IS IT A FACTOR
+       {
+           if(isprime(num/i))
+           {
+               max_factor=maximum(max_factor,num/i);
+           }
+           else if(isprime(i))
+           {
+               max_factor=maximum(max_factor,i);
+           }
+       }
+    }
+    return max_factor;
+}
+
+without function and time limit>0.44:
+
+int main() 
+{
+     long long int t;
+     scanf("%lld",&t);
+     long long int n;
+     while(t--)
+     {
+         scanf("%lld",&n);
+         if(isprime(n))// FIRST THE GIVEN NUMBER IS PRIME OR NOT
+         printf("%lld\n",n);
+         else
+         printf("%lld\n",large(n));// CHECKS FOR THE LARGEST PRIME FACTOR OTHER THAN THE GIVEN NUMBER.
+     }
+     
+	return 0;
+}
+
+
+
+#include <stdio.h>
+#include<math.h>
+
+int main() 
+{
+     long long int t;
+     scanf("%lld",&t);
+     long long int a,i,l,n,flag=0,j;
+     while(t--)
+     {
+         scanf("%lld",&n);
+         for(i=n;i>=1;i--)
+         {
+             if(n%i==0)
+             {
+                 
+                 flag=0;
+                 for(j=2;j<=sqrt(i);j++)
+                   {
+                    if(i%j==0)
+                    {
+                        
+                      flag=1;
+                      break;
+                    }
+                   }
+                   if(flag==0)
+                   {
+                   l=i;
+                   break;
+                   }
+             }
+         }
+              
+          
+          
+         printf("%lld\n",l);
+     }
+     
+	return 0;
+}
