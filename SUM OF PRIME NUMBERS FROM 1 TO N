@@ -21,6 +21,74 @@ Output:
 17
 
 
+
+
+code1:(using prime numbers using n/2)
+#include<stdio.h>
+
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    int n;
+    int i,j,flag=0,sum=0;
+    while(t--)
+    {
+        
+    scanf("%d",&n);
+    sum=0;
+    for(i=2;i<=n;i++)
+    {   
+        flag=0;
+        for(j=2;j<=(i/2);j++)
+        {
+            if(i%j==0)
+            {
+                flag=1;
+                break;
+            }
+        }
+        if(flag==0)
+        sum=sum+i;
+    }
+    printf("%d",sum);
+    }
+    
+}
+code 2:using sqrt
+#include<stdio.h>
+#include<math.h>
+
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    int n;
+    int i,j,flag=0,sum=0;
+    while(t--)
+    {
+        
+    scanf("%d",&n);
+    sum=0;
+    for(i=2;i<=n;i++)
+    {   
+        flag=0;
+        for(j=2;j<=sqrt(i);j++)
+        {
+            if(i%j==0)
+            {
+                flag=1;
+                break;
+            }
+        }
+        if(flag==0)
+        sum=sum+i;
+    }
+    printf("%d",sum);
+    }
+    
+}
+
 code;(EXECUTION TIME 0.72)  SIEVE OF ERATOSTHENES
 -------------------------------------------------
 #include <stdio.h>
