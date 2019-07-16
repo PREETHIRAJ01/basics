@@ -22,10 +22,61 @@ Output:
 
 Explanation:
 Testcase 1: Pair (2, 2) which has both prime numbers as well as satisfying the condition 2*2 <= 4.
- 
+ code1:
+ without extra memory
+ #include<math.h>
+#include<stdio.h>
+#include<stdbool.h>
+
+int  prime(int x)// to check whether it is prime or not
+{
+    int flag=0;
+    for(int l=2;l<=sqrt(x);l++)
+    {
+        if(x%l==0)
+        {
+            flag=1;
+            break;
+        }
+    }
+    if(flag==0)
+    return 1;
+    else
+    return 0;
+}
+
+int main() 
+{
+    int t;
+    scanf("%d",&t);
+    int n,p,q,i,j,k,flag=0;
+    while(t--)
+    {
+        scanf("%d",&n);
+        
+            for(i=2;i<=n/2;i++)// RUNNING THE LOOP TILL N/2 GIVES THE NUMBERS (MULTIPLE OF PRIME NUMBERS WHICH IS LESS THAN OR EQAUL TO N)
+            {
+                for(j=2;j<=n/2;j++)// RUNNING THE LOOP TILL N/2 GIVES THE NUMBERS (MULTIPLE OF PRIME NUMBERS WHICH IS LESS THAN OR EQAUL TO N
+                {
+                    int p=i;
+                    int q=j;
+                   int r1=prime(i);
+                   int r2=prime(j);
+                   if(r1==1 && r2==1 && p*q<=n)// IF BOTH R 1 AND R2 ARE PRIME THEN MULTIPLY AND SEE WHETHER IT IS LESS THAN OR EQUAL TON
+                   printf("%d %d ",p,q);
+                  
+                }
+                
+                
+            }
+            printf("\n");
+        
+    }
+	return 0;
+}
 
 
-CODE:
+CODE 2:
 
 
 #include <stdio.h>
