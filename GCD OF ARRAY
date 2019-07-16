@@ -1,0 +1,65 @@
+Given an array of N positive integers. Your task is to find the GCD of all numbers of the array.
+
+Input:
+First line of input contains number of test cases T. 
+First line of test case contains a positive integer N, size of the array. Next line contains the array elements.
+
+Output:
+For each testcase, print the GCD of array elements.
+
+Constraints:
+1 <= T <= 100
+1 <= N <= 106
+1 <= Arr[i] <= 106
+
+Example:
+Input:
+1
+2
+5 10
+
+Output:
+5
+
+Explanation:
+Testcase 1: For array elements 5,10 GCD will be 5.
+ 
+
+
+
+code:
+#include <stdio.h>
+
+int gcd(int a,int b)
+{
+    if(a==0)
+    return b;
+    else if(b==0)
+    return a;
+    else if(a<b)
+    return gcd(b,a);
+    else
+    return gcd(b,a%b);
+}
+
+
+int main()
+{
+	int t;
+	scanf("%d",&t);
+	int n,i,j,h;
+	while(t--)
+	{
+	    scanf("%d",&n);
+	    int a[n];
+	    for(i=0;i<n;i++)
+	    scanf("%d",&a[i]);
+	    for(i=0;i<n;i++)
+	    {
+	    h=gcd(a[i],a[i+1]);
+	    a[i+1]=h;
+	    }
+	    printf("%d\n",a[n-1]);
+	}
+	return 0;
+}
