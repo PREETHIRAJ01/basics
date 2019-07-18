@@ -1,0 +1,60 @@
+Given the first 2 terms A and B of a Geometric Series. The task is to find the Nth term of the series.
+
+Input:
+First line contains an integer, the number of test cases 'T'. 
+T testcases follow. Each test case in its first line contains two integer A and B (First 2 terms of GP). 
+In the second line of every test case it contains of an integer N.
+
+Output:
+In each seperate line print the Nth term of the Geometric Progression.
+Print the floor ( floor(2.3)=2 ) of the answer. Both the terms A and B forms a valid GP. 
+
+Constraints:
+1 <= T <= 30
+-100 <= A <= 100
+-100 <= B <= 100
+1 <= N <= 5
+
+Example:
+Input:
+2
+2 3
+1
+1 2
+2
+
+Output:
+2
+2
+
+Explanation:
+Testcase 2: The second term of series whose common ratio is 2 will be 2.
+ 
+NOTE:
+Gp series is a, ar, ar2, ar3.. and so on
+Nth term of gp is given by an=arn-1
+
+ratio is given by r= (n+1)term/(n)term
+
+TN=a*r^(n-1)
+Floor of negative number : floor(-0.5) = -1
+
+code:
+#include <stdio.h>
+#include<math.h>
+
+int main() 
+{
+	int t;
+	scanf("%d",&t);
+	float a,b;
+	int n;
+	while(t--)
+	{
+	    scanf("%f%f\n%d",&a,&b,&n);
+	    float r=(b/a);
+	    float result=a*(pow(r,n-1));
+	    printf("%.0f\n",floor(result));
+	}
+	return 0;
+}
