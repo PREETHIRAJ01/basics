@@ -1,0 +1,65 @@
+Saksham has recently learnt about Fibonacci series, and told his father about it. His father being a mathematician asked him to tell the Nth number of the Fibonacci series.
+But, Saksham told his father that it is difficult to solve the series as he is getting very large numbers. His father being lenient made his work less and asked to tell only last two digits of the Nth number of Fibonacci series. Please help Saksham to find the answer.
+
+Note: 1st element of series is 1. And 2nd element of series is 1.
+If last 2 digits are 03(for instance) print 3.
+
+Input:
+First line of the input contains an integer T denoting the number of test cases. 
+Then T test cases follow. Each test case consists of a single line containing an integer N.
+
+Output:
+Corresponding to each test case, print the required output in a new line.
+
+Constraints:
+1<=T<=100
+1<=N<=109
+
+Example:
+Input:
+8
+1
+2
+3
+4
+5
+6
+7
+8
+Output:
+1
+1
+2
+3
+5
+8
+13
+21
+
+
+code:
+
+int main()
+{
+	long long int t;
+	scanf("%lld",&t);
+	long long int n,n1=1,n2=2,r,f,i;
+	while(t--)
+	{
+	    n1=1,n2=1;
+	    scanf("%lld",&n);
+	    n=n%300;
+	     printf("%d ",n);
+	    for(i=2;i<=n;i++)
+	    {
+	        f=n1+n2;
+	        n1=n2%100;
+	        n2=f%100;
+	        
+	    }
+	        
+	        printf("%lld\n",n1);
+	    
+	}
+	return 0;
+}
