@@ -1,0 +1,59 @@
+Given a positive integer N, find the Nth Even Fibonacci number. Since the answer can be very large, print the answer modulo 1000000007.
+
+Input:
+
+The first line of input contains T denoting the number of testcases.
+Then each of the T lines contains a single positive integer N.
+
+Output:
+
+Output the Nth Even Fibonacci number.
+
+Constraints:
+
+1<=T<=200
+1<=N<=1000
+
+Example:
+
+Input:
+3
+1
+2
+5
+
+Output:
+
+2
+8
+610
+
+
+
+
+code:
+int main()
+{
+	long long unsigned int t;
+	scanf("%lld",&t);
+	long long unsigned int n,n1=1,n2=1,f,i,count=0,position;
+	while(t--)
+	{
+	    n1=1,n2=1;
+	    count=0,position=0;
+	    scanf("%lld",&n);
+	    while(count!=n)loop runs till n
+	    {
+	        f=(n1+n2)%1000000007; 
+	        n1=n2;
+	        n2=f;
+	        if(position%3==0)// since every third number is even
+	        count++;
+	        position++;
+	        
+	    }
+	    printf("%lld\n",f%1000000007);
+	}
+	return 0;
+
+}
