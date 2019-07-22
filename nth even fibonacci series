@@ -28,7 +28,51 @@ Output:
 8
 610
 
+code1;
+FIBONACCI SERIES- 
+0 1 2 3 4 5 6 7  8  9
+0 1 1 2 3 5 8 13 21 54....
+FOR FIBONACCI SERIES MOD 100 -THE CYCLE LENGTH IS 300
 
+here rem1=n%300 for n>=300 eg: n=300
+     rem1=300%300=0
+     rem1=0
+it goes to if and else loop condition doesnt gets satisfied and prints rem is 0 as its already initialized
+
+   here rem1=n%300 for n>=300 eg: n=303
+     rem1=303%300=3
+     rem1=3
+     so it goes to else part
+     rem=(1+1)%100=2
+for loop  breaks ----then rem is 2
+
+
+
+
+int main() {
+	int cs;
+	scanf("%d",&cs);
+	while(cs--)
+	{
+	     unsigned long long int n,first=1,rem=0,second=1;
+	    
+	scanf("%llu",&n);
+	 int rem1=n%300;
+	if(rem1==1||rem1==2)
+	printf("1\n");
+    else 
+	{
+	for( int i=3;i<=rem1;i++)
+	{
+	rem=(first+second)%100;
+	first=second;
+	second=rem;
+	}
+	     printf("%llu\n",rem);
+	}
+	}
+	return 0;
+}
 
 
 code:
