@@ -1,0 +1,138 @@
+Given an array A of size N, 
+construct a Product Array P (of same size) such that P is equal to the product of all the elements of A except A[i].
+
+Input:
+The first line of input contains an integer T denoting the number of test cases.
+T testcases follow. Each testcase contains two lines of input. The first line is N.
+The second line contains N elements separated by spaces.
+
+Output:
+For each testcase, print the Product array P.
+
+Constraints:
+1 <= T <= 10
+1 <= N <= 1000
+1 <= Ai <= 20
+
+Example:
+Input
+2
+5
+10 3 5 6 2
+2
+12 20
+Output
+180 600 360 300 900
+20 12
+
+Explanation:
+Testcase1: For the product array P, at i=0 we have 3*5*6*2. At i=1 10*5*6*2. At i=2 we have 10*3*6*2. At i=3 we have 10*3*5*2. At i=4 we have 10*3*5*6
+So P is 180 600 360 300 900
+ 
+1. Compute product of all elements of array in prod(let).
+Now start traversing array print the quotient of prod dividing by current element i.e. arr[i]. Do this for remaining elements.
+
+
+CODE:
+#include <stdio.h>
+
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    int n,i,j;
+    while(t--)
+    {
+        scanf("%d",&n);
+        int a[n];
+        int product=1;
+        for(i=0;i<n;i++)
+        {
+            scanf("%d",&a[i]);
+            product=product*a[i];
+        }
+        /*for(i=0;i<n;i++)// WE CAN STORE THE QUOTIENT IN SEPARATE ARRAY ALSO
+        {
+            a[i]=product/a[i];
+        }
+        */
+        for(i=0;i<n;i++)
+        {
+            printf("%d ",product/a[i]);
+        }
+        printf("\n");
+    }
+	return 0;
+}
+ 
+ JAVA:
+ import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) throws IOException 
+	{
+		
+	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(br.readLine());
+
+	    while(t-->0)
+	    {
+	        int n=Integer.parseInt(br.readLine());
+	        int arr[]=new int[n];
+	        long prod=1;
+	        String[] s = br.readLine().trim().split(" ");
+	        for(int i=0;i<n;i++)
+	        {
+	        arr[i]=Integer.parseInt(s[i]);
+	        prod*=arr[i];
+	        }
+	       StringBuffer sb= new StringBuffer();
+
+            for(int i = 0 ; i < n ; i++ ){
+            sb.append((int)prod/arr[i]+" ");
+            }
+            System.out.println(sb);
+	      
+	    }
+
+	}
+}
+WITH FUNCTIONS:
+#include<stdio.h>
+void exproduct(int a[],int n);
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    for(int i=0;i<t;i++)
+    {
+        int n;
+        int a[1000];
+        scanf("%d",&n);
+        for(int i=0;i<n;i++)
+        {
+            scanf("%d",&a[i]);
+        }
+        exproduct(a,n);
+    }
+}
+void exproduct(int a[],int n)
+{
+    int b[n];
+    int product=1;
+    for(int i=0;i<n;i++)
+    {
+        product*=a[i];
+    }
+    for(int i=0;i<n;i++)
+    {
+        b[i]=product/a[i];
+    }
+    for(int i=0;i<n;i++)
+    {
+        printf("%d ",b[i]);   
+    }
+    printf("\n");
+}
