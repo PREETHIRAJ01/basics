@@ -1,0 +1,151 @@
+Given a sorted array arr[] of non-repeating integers without duplicates. 
+Sort the array into a wave-like array and return it. In other words, arrange the elements into a 
+sequence such that a1 >= a2 <= a3 >= a4 <= a5..... (considering the increasing lexicographical order).
+
+Input:
+The first line contains an integer T, depicting total number of test cases.
+T testcases follow. The first line of each testcase contains an integer N depicting the size of the array. The second line contains
+N space separated elements of the array.
+
+Output:
+For each testcase, in a new line, print the array into wave-like array.
+
+Constraints:
+1 ≤ T ≤ 100
+1 ≤ N ≤ 106
+0 ≤ A[i] ≤107
+
+Example:
+Input:
+1
+5
+1 2 3 4 5
+Output:
+2 1 4 3 5
+
+Explanation:
+Testcase 1: Array elements after sorting it in wave form are 2 1 4 3 5.
+
+hint:You can reach the wave array by swapping the adjacent elements based on some checks.
+     or
+     This can be done in O(n) time by doing a single traversal of given array.
+     The idea is based on the fact that if we make sure that all even positioned (at index 0, 2, 4, ..) 
+     elements are greater than their adjacent odd elements, we don’t need to worry about odd positioned element.
+     Following are simple steps.
+1) Traverse all even positioned elements of input array, and do following.
+….a) If current element is smaller than previous odd element, swap previous and current.
+….b) If current element is smaller than next odd element, swap next and current.
+ 
+
+considering c++ code
+1) n=5
+   0    |   1      |   2    |   3   |     4 
+   -----|----------|--------|-------|-----
+   1    |   2      |   3    |   4   |     5
+   i=0                i=2                i=4
+o:   2  >=   1       <=   4   >=   3       5
+   
+ 2)  
+    n=6
+   0    1     2    3    4     5
+   1    2     3    4    5     6
+   i=0       i=2       i=4    
+   2    1     4    3   6     5
+
+
+code:
+int main() 
+{
+     long long int t;
+     scanf("%lld",&t);
+     long long int n,i,j;
+     while(t--)
+     {
+         scanf("%d",&n);
+         long long int a[n],temp;
+         for(i=0;i<n;i++)
+         {
+             scanf("%lld",&a[i]);
+         }
+         for(i=0,j=i+1;i<=n-1 && j<=n-1;i=i+2,j=j+2)
+         {
+             temp=a[i];
+             a[i]=a[j];
+             a[j]=temp;
+         }
+         for(i=0;i<n;i++)
+         printf("%lld ",a[i]);
+         printf("\n");
+     }
+	return 0;
+} 
+c++:
+simple method:
+ int main()
+ {
+	int t;
+	long long int i,n;
+	cin>>t;
+	while(t--)
+	{
+	    cin>>n;
+	    long long int arr[n];
+	    for(i=0;i<n;i++)
+	    {
+	        cin>>arr[i];
+	    }
+	    for(i=0;i<n;i+=2)
+	    {
+	        if(i==n-1)//if n is odd this if gets executed a time
+	        {
+	            cout<<arr[i]<<" ";
+	        }
+	        else// if n is even this executes
+	            cout<<arr[i+1]<<" "<<arr[i]<<" ";
+	    }
+	    cout<<"\n";
+	}
+	return 0;
+}
+
+
+java:
+import java.io.*;
+import java.util.*;
+
+class GFG {
+    
+    public static void swap(int arr[], int x, int y){
+        int tmp = arr[x];
+        arr[x] = arr[y];
+        arr[y] = tmp;
+    }
+    
+	public static void main (String[] args) throws IOException
+  {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int t = Integer.parseInt(br.readLine().trim()); //Inputting the testcases
+		while(t-->0)
+    {
+		    int n = Integer.parseInt(br.readLine().trim());
+		    int arr[] = new int[n];
+		    String inputLine[] = br.readLine().trim().split(" ");
+		    for(int i=0; i<n; i++)
+        {
+		        arr[i]=Integer.parseInt(inputLine[i]);
+		    }
+		    
+		    // iterating over the array elements and
+		    // swap the elements with their adjacents
+		    for(int i=0;i<n-1;i=i+2){
+		        swap(arr, i, i+1);
+		    }
+		    StringBuffer sb = new StringBuffer();
+		    for(int i=0; i<n; i++){
+		        sb.append(arr[i] + " ");
+		    }
+		    System.out.println(sb);
+		}
+	}
+}
+ 
