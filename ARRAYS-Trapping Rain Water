@@ -94,3 +94,41 @@ int main()
      }
 	return 0;
 }
+OR
+using functions:
+int getWater(int array[],int n)
+{
+int totalWater=0;
+int leftMax=0;
+int rightMax=0;
+int lb=0,ub=n-1;
+while(lb<=ub)
+{
+if(array[lb]<array[ub])
+{
+if(array[lb]>leftMax) leftMax=array[lb];
+else totalWater+=leftMax-array[lb];
+lb++;
+}
+else
+{
+if(array[ub]>rightMax) rightMax=array[ub];
+else totalWater+= rightMax-array[ub];
+ub--;
+}
+}
+return totalWater;
+}
+int main()
+{
+int t,n;
+scanf("%d",&t);
+while(t--)
+{
+scanf("%d",&n);
+int array[n];
+for(int i=0;i<n;i++) scanf("%d",&array[i]);
+printf("%d\n",getWater(array,n));
+}
+return 0;
+}
