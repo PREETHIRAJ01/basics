@@ -1,0 +1,96 @@
+Given an array arr[] of N non-negative integers representing height of blocks at index i as Ai where
+the width of each block is 1. Compute how much water can be trapped in between blocks after raining.
+Structure is like below:
+
+(refer geeks for geeks)
+
+
+We can trap 2 units of water in the middle gap.
+
+
+
+Input:
+The first line of input contains an integer T denoting the number of test cases. The description of T test cases follows. Each test case contains an integer N denoting the size of the array, followed by N space separated numbers to be stored in array.
+
+Output:
+Output the total unit of water trapped in between the blocks.
+
+Constraints:
+1 <= T <= 100
+3 <= N <= 107
+0 <= Ai <= 108
+
+Example:
+Input:
+2
+4
+7 4 0 9
+3
+6 9 9
+
+Output:
+10
+0
+
+Explanation:
+Testcase 1: Water trapped by block of height 4 is 3 units, block of height 0 is 7 units. So, total unit of water trapped is 10 units.
+
+
+
+code:execution time:(0.1)
+#include <stdio.h>
+
+int main()
+{
+     int t;
+     scanf("%d",&t);
+     int n,i,j,l,r;
+     while(t--)
+     {
+         scanf("%d",&n);
+         int a[n],l[n],r[n];
+         for(i=0;i<n;i++)
+         {
+             scanf("%d",&a[i]);
+         }
+         int lmax=0,rmax=0,sum=0;
+         // finding the maximum element from left side and storing it in l[i]
+         for(i=0;i<n;i++)
+         {
+             if(lmax<a[i])
+             {
+                 lmax=a[i];
+             }
+             
+                 l[i]=lmax;
+         }
+         // finding the maximum element from right side of a[] array and storing it in l[i]
+         for(i=n-1;i>=0;i--)
+         {
+             if(rmax<a[i])
+             {
+                 
+                 rmax=a[i];
+             }
+             
+                 r[i]=rmax;
+             
+         }
+        // calculating the water each index stores 
+        // finding the minimum of l[i] and r[i] and subtracting it with a[i]
+         for(i=0;i<n;i++)
+         {
+             
+             a[i]=(((l[i]<r[i])?l[i]:r[i])-a[i]);
+         }
+         for(i=0;i<n;i++)
+         {
+             sum=sum+a[i];
+             
+         }
+         printf("%d",sum);
+         
+        printf("\n"); 
+     }
+	return 0;
+}
