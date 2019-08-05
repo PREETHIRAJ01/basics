@@ -1,0 +1,40 @@
+For an integer n find number of trailing zeroes in n! . 
+
+Input:
+The first line contains an integer 'T' denoting the total number of test cases. In each test cases, it contains an integer 'N'.
+
+
+Output:
+In each seperate line output the answer to the problem.
+
+
+Constraints:
+1<=T<=100
+1<=N<=1000
+
+
+Example:
+Input:
+1
+9
+
+Output:
+1
+
+
+#include <stdio.h>
+
+int main()
+{
+	int t;
+	scanf("%d",&t);
+	int n;
+	while(t--)
+	{
+	    scanf("%d",&n);
+	    int count;
+	    count=(n/5)+(n/25)+(n/125)+(n/625);
+	    printf("%d\n",count);
+	}
+	return 0;
+}
