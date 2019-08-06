@@ -1,0 +1,117 @@
+Given an array of integers which may or may not contain duplicate elements. 
+Your task is to print the array after removing duplicate elements, if present.
+
+Input:
+The first line of input contains an integer T denoting the number of test cases. 
+Then T test cases follow. Each test case contains an integer n denoting the size of the array. 
+Then following line contains 'n' integers forming the array.
+
+Output: 
+Output the array with no duplicate element present, in the same order as input.
+
+Constraints:
+1<=T<=100
+1<=n<=100
+1<=a[i]<=100
+
+Example:
+Input:
+1
+6
+1 2 3 1 4 2
+Output: 
+1 2 3 4
+
+code:
+#include <stdio.h>
+
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    int n,i,j;
+    while(t--)
+    {
+        scanf("%d",&n);
+        int a[n];
+        for(i=0;i<n;i++)
+        {
+            scanf("%d",&a[i]);
+        }
+        for(i=0;i<n;i++)
+        {
+            int f=0;
+            
+        for(j=i;j>=0;j--)
+         {
+             
+         if(a[i]==a[j])
+           {
+               f=f+1;
+               
+            }
+
+         }
+            if(f==1)
+           {
+         printf("%d ",a[i]);
+            }
+
+          }
+        printf("\n");
+    }
+	return 0;
+}
+code explanation for below code:
+
+For Input:
+1
+6
+1 2 3 1 4 2
+Your Output is:
+i=0 j=0 1-1  (1)-->printed 
+i=1 j=1 2-2 j=0  (2) -->printed
+i=2 j=2 3-3 j=1 j=0  (3) -->printed
+i=3 j=3 1-1 j=2 j=1 j=0 1-1 i=4 j=4 4-4 j=3 j=2 j=1 j=0  (4) -->printed
+i=5 j=5 2-2 j=4 j=3 j=2 j=1 2-2 j=0 
+code:
+
+#include <stdio.h>
+
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    int n,i,j;
+    while(t--)
+    {
+        scanf("%d",&n);
+        int a[n];
+        for(i=0;i<n;i++)
+        {
+            scanf("%d",&a[i]);
+        }
+        for(i=0;i<n;i++)
+        {
+            int f=0;
+            printf("i=%d ",i);
+        for(j=i;j>=0;j--)
+         {
+             printf("j=%d ",j);
+         if(a[i]==a[j])
+           {
+               f=f+1;
+               printf("%d-%d ",a[i],a[j]);
+            }
+
+         }
+            if(f==1)
+           {
+         printf(" %d \n",a[i]);
+            }
+
+          }
+        printf("\n");
+    }
+	return 0;
+}
