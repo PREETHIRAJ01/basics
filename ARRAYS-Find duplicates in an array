@@ -134,3 +134,28 @@ c = 0;
 if(c)
 cout << "-1";
 }
+OR
+void printDuplicates(int arr[], int n)
+{
+    int f=0;
+   for(int i=0;i<n;i++)
+   {
+       int index=arr[i]%n;
+      if(arr[index]>=n)
+      {
+          if(arr[index]<(2*n))
+          {
+              cout<<index<<" ";
+              f=1;
+          }
+      }
+      arr[index]+=n;
+   }
+   
+   
+   
+if(f==0)
+cout<<-1;
+
+
+}
