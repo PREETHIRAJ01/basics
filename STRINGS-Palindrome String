@@ -52,3 +52,74 @@ int main()
     }
 	return 0;
 }
+or iterating till half
+----------------------------------------------------------------------
+explanation:
+for(i=0,j=n-1;i<=n/2,j>=n/2;i++,j--)
+        {
+           if(s[i]==s[j])
+           {
+               printf("%c %c\n",s[i],s[j]);
+           }
+        }
+FOR EVEN STRING:
+For Input:
+1
+4
+abba
+Your Output is:
+a a I=0 J=3
+b b I=1 J=2
+FOR ODD STRING:
+For Input:
+1
+5
+ababa
+Your Output is:
+a a I=0 J=4
+b b I=1 J=3
+a a I=2 J=2
+
+#include <stdio.h>
+
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    int n,i,j,flag=0;
+    while(t--)
+    {
+        scanf("%d",&n);
+        char s[100];
+        scanf("%s",s);
+        flag=0;
+        for(i=0,j=n-1;i<=n/2,j>=n/2;i++,j--)
+        {
+           if(s[i]!=s[j])
+           {
+               flag=1;
+               break;
+           }
+        }
+        if(flag==0)
+        {
+            printf("Yes\n");
+        }
+        else if(flag==1)
+        {
+            printf("No\n");
+        }
+    }
+	return 0;
+}
+
+
+java:
+String s=sc.next();
+StringBuilder builder = new StringBuilder(s);
+builder.reverse();
+String s1=builder.toString();
+if(s.equals(s1))
+System.out.println("Yes");
+else
+System.out.println("No");
