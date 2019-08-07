@@ -1,0 +1,54 @@
+Given a string S, check if it is palindrome or not.
+
+Input:
+The first line contains 'T' denoting the number of test cases. T testcases follow. 
+Each testcase contains two lines of input. The first line contains the length of the string and the second line contains the string S.
+
+Output:
+For each testcase, in a new line, print "Yes" if it is a palindrome else "No". (Without the double quotes)
+
+Constraints:
+1 <= T <= 30
+1 <= N <= 100
+
+Example:
+Input:
+1
+4
+abba
+Output:
+Yes
+
+code:
+#include <stdio.h>
+
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    int n,i,j,flag=0;
+    while(t--)
+    {
+        scanf("%d",&n);
+        char s[100];
+        scanf("%s",s);
+        flag=0;
+        for(i=0,j=n-1;i<=j;i++,j--)
+        {
+           if(s[i]!=s[j])
+           {
+               flag=1;
+               break;
+           }
+        }
+        if(flag==0)
+        {
+            printf("Yes\n");
+        }
+        else if(flag==1)
+        {
+            printf("No\n");
+        }
+    }
+	return 0;
+}
