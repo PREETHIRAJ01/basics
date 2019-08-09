@@ -1,0 +1,66 @@
+Given a string S consisting of lowercase Latin Letters. Find the first non repeating character in S.
+
+Input:
+The first line contains T denoting the number of testcases. Then follows description of testcases.
+Each case begins with a single integer N denoting the length of string. The next line contains the string S.
+
+Output:
+For each testcase, print the first non repeating character present in string. Print -1 if there is no non repeating character.
+
+Constraints:
+1 <= T <= 900
+1 <= N <= 104
+
+Example:
+Input : 
+3
+5  
+hello
+12
+zxvczbtxyzvy
+6
+xxyyzz
+
+Output :
+h
+c
+-1
+
+code:
+#include <stdio.h>
+
+int main() 
+{ 
+   int t,i,j,count=0,found=0;
+    scanf("%d",&t);
+    while(t--)
+    {
+        int n,found=0,a[26]={0};
+        scanf("%d",&n);
+        char s[10000];
+        scanf("%s",s);
+        for(i=0;i<n;i++)
+        {
+            a[s[i]-'a']++;
+        }
+        for(i=0;i<n;i++)
+        {
+            if(a[s[i]-'a']==1)
+            {
+                found=1;
+                printf("%c\n",s[i]);
+                break;
+            }
+        }
+        if(found==0)
+        {
+            printf("-1\n");
+        }
+        
+    }
+    return 0; 
+} 
+
+
+OR
+    
