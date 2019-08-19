@@ -1,0 +1,60 @@
+code:
+#include <stdio.h>
+#include<string.h>
+int main() 
+{
+	int t;
+	scanf("%d",&t);
+	char s[1004]; // enough room for a string of length 1000 plus end of string marker;
+  fgets(s,sizeof(s),stdin); 
+	while(t--)
+	{
+	    fgets(s,sizeof(s),stdin); 
+	    int i,j;
+	    for(i=0;i<strlen(s);i++)
+	    {
+	        if(i==0)
+	        {
+	           if(s[i]>='a'&&s[i]<='z')
+	                s[i]=s[i]-32;
+	        }
+	        if(s[i]==' ')
+	        {
+	            if(s[i+1]>='a'&&s[i+1]<='z')
+	                s[i+1]=s[i+1]-32;
+	        }
+	    }
+	    for(i=0;i<strlen(s);i++)
+	        printf("%c",s[i]);
+	    
+	}
+	return 0;
+}
+
+
+
+
+or
+
+
+
+
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    gets();
+    while(t!=0) {
+        char string[1000];
+        int i;
+        gets(string);
+        if(string[0]>='a' && string[0]<='z')
+            string[0] = string[0] -'a' + 'A';
+        for(i=0; string[i]!= '\0'; i++){
+            if(string[i] == ' ' && string[i+1]>='a' && string[i+1]<='z'){
+                string[i+1] = string[i+1] -'a' + 'A';
+            }
+        }
+        puts(string);
+        t--;
+    }
