@@ -1,0 +1,81 @@
+Given a string S consisting only '0's and '1's,  print the last index of the '1' present in it.
+
+Input:
+First line of the input contains the number of test cases T, T lines follow each containing a stream of characters.
+
+Output:
+Corresponding to every test case, output the last index of 1. If 1 is not present, print "-1" (without quotes).
+
+Constraints:
+1 <= T <= 110
+1 <= |S| <= 106
+
+Example:
+Input:
+2
+00001
+0
+Output:
+4
+-1
+
+Explanation:
+Testcase 1: Last index of  1 in given string is 4.
+Testcase 2: Since, 1 is not present, so output is -1.
+
+
+
+
+code in c:
+#include <stdio.h>
+#include<string.h>
+int main()
+{
+	int t;
+	scanf("%d",&t);
+	while(t--)
+	{
+	    char s[1000000];
+	    scanf("%s",s);
+	    int i,flag=0;
+	    for(i=strlen(s)-1;i>=0;i--)
+	    {
+	        if(s[i]=='1')
+	        {
+	            printf("%d\n",i);
+	            flag=1;
+	            break;
+	        }
+	    }
+	    if(flag==0)
+	    printf("-1\n");
+		}
+	return 0;
+}
+
+java:
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	    Scanner scan = new Scanner(System.in);
+	    int t = scan.nextInt();
+	    while(t-->0)
+	    {
+	       String str = scan.next();
+	       char arr[] = str.toCharArray();
+	        boolean found = false;
+	        for(int i=str.length()-1;i>=0;i--)
+	           {
+	               if(arr[i]=='1')
+	               {
+	                System.out.println(i);
+	                found =true;
+	                break;
+	               }
+	           }
+	       if(!found)
+	        System.out.println("-1");
+	    }
+	 }
+}
