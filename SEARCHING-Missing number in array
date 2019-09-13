@@ -1,0 +1,102 @@
+Given an array C of size N-1 and given that there are numbers from 1 to N with one element missing,
+the missing number is to be found.
+
+Input:
+The first line of input contains an integer T denoting the number of test cases. 
+For each test case first line contains N(size of array). The subsequent line contains N-1 array elements.
+
+Output:
+Print the missing number in array.
+
+Constraints:
+1 ≤ T ≤ 200
+1 ≤ N ≤ 107
+1 ≤ C[i] ≤ 107
+
+Example:
+Input:
+2
+5
+1 2 3 5
+10
+1 2 3 4 5 6 7 8 10
+
+Output:
+4
+9
+
+Explanation:
+Testcase 1: Given array : 1 2 3 5. Missing element is 4.
+
+
+
+
+
+
+
+
+
+
+
+
+hint:
+1. Use the property of XOR i.e for any number x, x^x =0.
+2.Use the sum property of natural numbers i.e. sum of 'n' numbers and then do "sum -= arr[i]" for each element of the array
+The solution using xor property is available in full solution at the end. The sudo code of this hint will be in the next hint
+3. Step1: Sum of 'n' natural numbers from 1 to n.
+    Step2: compute the sum of elements of array
+    Step3: subtract the elements sum from natural numbers sum i.e. n*(n+1)/2 - (sum of array elements). 
+    Thus the resultant value will be our required missing number.
+    
+    
+    
+    
+    using x-or:
+   #include <stdio.h>
+int main()
+{
+	int t, x;
+	scanf("%d",&t);
+	while(t--)
+	{
+		int n,res=0;
+		scanf("%d",&n);
+
+		for(int i=1;i<n;i++){
+			scanf("%d",&x);
+			res = res^x;
+			res = res^i;
+		}
+		printf("%d\n",(res^n));
+	}
+	return 0;
+}
+using hint3:
+int main()
+
+{
+	int t;
+	scanf("%d",&t);
+	while(t--)
+	{
+	    int n;
+	    scanf("%d",&n);
+	    int a[n],i,j,sum=0,total;
+	    total=n*(n+1)/2;
+	    for(i=0;i<n-1;i++)
+	    {
+	        scanf("%d",&a[i]);
+	        
+	    }
+	    for(i=0;i<n-1;i++)
+	    {
+	        sum=sum+a[i];
+	        
+	    }
+	    printf("%d\n",total-sum);
+	    
+	    
+	}
+	return 0;
+}
+
