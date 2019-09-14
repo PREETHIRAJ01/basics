@@ -1,0 +1,89 @@
+You are given an array arr[] of N integers including 0. The task is to find the smallest positive number missing from the array.
+Note: Expected solution in O(n) time using constant extra space.
+
+Input:
+First line consists of T test cases. First line of every test case consists of N, 
+denoting the number of elements in array. Second line of every test case consists of elements in array.
+
+Output:
+Single line output, print the smallest positive number missing.
+
+Constraints:
+1 <= T <= 100
+1 <= N <= 106
+-106 <= arr[i] <= 106
+
+Example:
+Input:
+2
+5
+1 2 3 4 5
+5
+0 -10 1 3 -20
+Output:
+6
+2
+
+Explanation:
+Testcase 1: Smallest positive missing number is 6.
+Testcase 2: Smallest positive missing number is 2.
+ 
+
+
+code:
+
+with constant space:
+1.i am creating frequency array and while inputting numbers ,i am checking the positive number and the numbers which are positive are
+taken into account and its frequency is stored in a[] array one by one
+2. now am running the loop from 1 to n+1
+    because the smallest positive number will be between (1- n-1)
+    eg:
+    5
+    1 2 3 4 5--->output 6 (which is n+1)
+    5
+    0 -10 -1 1 3--->output 2({1,3} missing number is 2)
+
+
+
+
+
+
+#include <stdio.h>
+
+
+    
+
+int main() 
+{
+    int t;
+    scanf("%d",&t);
+    while(t--)
+    {
+        int n; 
+        scanf("%d",&n);
+        int a[1000000]={0};
+        int i,j,key,index,x;
+        for(i=1;i<=n;i++)
+        {
+            scanf("%d",&x);
+            if(x>0)
+            {
+            a[x]++;
+            
+            }
+            
+        }
+        
+        for(i=1;i<=(n+1);i++)
+        {
+            if(a[i]==0)
+            {
+                printf("%d",i);
+                break;
+            }
+            
+        }
+        printf("\n");
+    }
+	return 0;
+}
