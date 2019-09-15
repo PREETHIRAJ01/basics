@@ -1,0 +1,84 @@
+Burgers - Maximum Possible Amount
+In a restaurant, two types of burgers are available (Veg burgers and Chicken burgers). 
+To assemble a veg burger, 2 buns and a veg cutlet are required.
+To assemble a chicken burger, 2 buns and a chicken cutlet are required.
+There are B buns, V veg cutlets and C chicken cutlets are available to assemble the burgers. 
+The cost of one veg burger is Rs. X and the cost of one chicken burger is Rs. Y. 
+The values of B, V, C, X and Y are passed as the input to the program.
+The program must print the maximum possible amount obtained by selling the burgers as the output.
+Boundary Condition(s):2 <= B, V, C <= 10^61 <= X, Y <= 10^3Input Format:The first line contains B, V, C separated by a space
+.The second line contains X, Y separated by a space.Output Format:The first line contains the maximum possible amount.
+
+
+Example Input/Output 1:
+Input:12 6 425 30
+Output:170
+Explanation:4 chicken burgers = 4 * 30 = 120.2 
+veg burgers = 2 * 25 = 50.
+So the total amount is 120 + 50 = 170.
+
+
+
+Example Input/Output 2:
+Input:9 2 4100 25
+Output:250
+Explanation:2 
+chicken burgers = 2 * 25 = 50.2 
+veg burgers = 2 * 100 = 200.
+
+So the total amount is 50 + 200 = 250
+
+.Max Execution Time Limit: 500 millisecs
+
+
+what i did:
+ 1. first buns should be in pairs to create a burger
+      so i am dividing the given buns by 2
+ 2.check if the count of buns is lesser than or greater than the total of v and c
+        if its lesser than just  --> just do (v*x+c*y) and print it
+            eg:
+  testcase 2:    b       v     c
+              1000000  23456 65432
+               1000  1000
+                x     y    
+    if its greater than ,then see the combinations of buns from i loop-->0 to buns/2
+                                                                   j loop-->buns/2 to 0
+                                                                   
+                        b v c                                         
+           testcase 2 : 2 4 5 --------> in the we have one pair of bun so (b/2)=1
+                                        combination of 1--> 0+1               and       1+0
+                        10 12                             (0*10+1*12)=12              (1*10+0*12)=10
+                         x  y                                        
+                                                              12>10 so ans is 12     
+                                                                   
+    code:
+      int max=0,amount=0;
+      if(v+c<buns/2)
+      {
+      printf("%d",(v*x+c*y));
+      }
+      else if(v+c>buns)
+      {
+        for(i=0;i<=buns/2;i++)
+        {
+        for(j=buns/2;j>=0;j--)
+        {
+        if(i+j==buns && i<=v && j<=c)
+        {
+           amount=(i*v+j*y)
+           }
+           if(max<amount)
+           {
+             
+           max=amount;
+           }
+         }
+        }
+        printf("%d",max);
+      }
+           
+        
+        
+        
+                    
+         
