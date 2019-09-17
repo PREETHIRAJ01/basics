@@ -1,0 +1,56 @@
+A string S is passed as the input.
+The program must reverse the order of the words in the string and print them as the output.
+Input Format:The first line will contain S.Output Format:The first line will contain the words in the string S 
+in the reverse order.Boundary Conditions:Length of S is from 5 to 100.
+Example Input/Output 1:Input:Today is FridayOutput:
+Friday is Today
+Example Input/Output 2:
+Input:five six ten eleven
+Output:
+eleven ten six five Max
+Execution Time Limit: 5000 millisecs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CODE:
+#include<stdio.h>
+#include <stdlib.h>
+int main()
+{ char s[100]; 
+scanf("%[^\n]s",s);
+int i,k=0,j=0; 
+char s1[5][100];
+
+for(i=0;i<strlen(s);i++)
+{ 
+if(s[i]=='+' || s[i]=='.' || s[i]==',' || (s[i]>='a' && s[i]<='z') || (s[i]>='A' && s[i]<='Z'))
+{ 
+s1[k][j++]=s[i]; 
+} 
+
+s1[k][j]='\0';
+
+if(s[i]==' ' && (s[i+1]=='.' || s[i+1]==',' || (s[i+1]>='a' && s[i+1]<='z') || (s[i+1]>='A' && s[i+1]<='Z')) ) 
+{ 
+s1[k++][j]; 
+j=0; 
+} 
+} 
+
+
+for(i=k;i>=0;i--) 
+{ printf("%s ",s1[i]);
+}
+}
