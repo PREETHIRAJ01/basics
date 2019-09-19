@@ -1,0 +1,68 @@
+CODE:
+/*
+Input  : paper true soap floppy flower
+Output : floppy, flower, paper, soap, true
+*/
+
+
+#include <stdio.h>
+#include<string.h>
+
+int main() 
+{
+    char s[1000];
+    fgets(s,1000,stdin);
+    char s1[5][100];
+    int k=0,j,h=0,i,min_idx;
+    for(i=0;i<strlen(s);i++)
+    {
+        if((s[i]>='a' && s[i]<='z')||(s[i]>='A' && s[i]<='Z'))
+        {
+            s1[k][h++]=s[i];
+        }
+        s1[k][h]='\0';
+        if(s[i]==' ' && (s[i+1]>='a' && s[i+1]<='z')||(s[i+1]>='A' && s[i+1]<='Z'))
+        {
+            s1[k++][h];
+            h=0;
+        }
+        
+    }
+    printf("beforesorting\n");  
+    for(i=0;i<=k;i++)
+    printf("%s\n",s1[i]);
+   
+    // One by one move boundary of unsorted subarray 
+    char minStr[1000]; 
+    for (i = 0; i <=k; i++) 
+    { 
+        // Find the minimum element in unsorted array 
+        int min_idx = i; 
+        strcpy(minStr, s1[i]); 
+        for (j = i+1; j <=k; j++) 
+        { 
+            // If min is greater than arr[j] 
+            if (strcmp(minStr, s1[j]) > 0) 
+            { 
+                // Make arr[j] as minStr and update min_idx 
+                strcpy(minStr, s1[j]); 
+                min_idx = j; 
+            } 
+        } 
+   
+        // Swap the found minimum element with the first element 
+        if (min_idx != i) 
+        { 
+            char temp[1000]; 
+            strcpy(temp, s1[i]); //swap item[pos] and item[i] 
+            strcpy(s1[i], s1[min_idx]); 
+            strcpy(s1[min_idx], temp); 
+        } 
+    }
+    
+    for(i=0;i<=k;i++)
+    printf("%s\n",s1[i]);
+       
+        
+	return 0;
+}
