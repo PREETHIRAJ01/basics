@@ -1,0 +1,69 @@
+Alphabet Triangle Pattern
+
+
+The program must accept an alphabet CH as the input.
+The program must print the desired pattern as shown in the Example 
+Input/Output section.
+Input Format:The first line contains the alphabet CH.
+Output Format:The lines containing the desired pattern as shown in the Example 
+Input/Output section.Example Input/Output 1:Input:F
+Output:
+
+A
+B B
+C C C
+D D D D
+E E E E E
+F F F F F F
+Example Input/Output 2:
+Input:gOutput:
+A
+B B
+C C C
+D D D D
+E E E E E
+F F F F F F
+G G G G G G G
+Max Execution Time Limit: 1000 millisecs
+
+CODE:
+#include<stdio.h>#include <stdlib.h>
+int main()
+{ 
+char ch,s; 
+scanf("%c",&ch); 
+s=(ch>='A' && ch<='Z')?ch:(ch-32); 
+int i,j;
+for(i='A';i<=s;i++)
+{ 
+for(j='A';j<=i;j++) 
+{
+printf("%c",i); 
+} 
+printf("\n");
+}
+}
+
+or
+ASCII VALUE OF A IS 65
+               Z IS 9
+
+
+#include<stdio.h>
+#include <stdlib.h>
+int main()
+{ 
+char ch,s; 
+scanf("%c",&ch); 
+s=(ch>='A' && ch<='Z')?ch:(ch-32); 
+int i,j;
+for(i=1;i<=((s-65)+1);i++)
+{ 
+    
+for(j=1;j<=i;j++) 
+{
+printf("%c",'A'+i-1); 
+} 
+printf("\n");
+}
+}
