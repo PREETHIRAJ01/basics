@@ -1,0 +1,32 @@
+
+the program must accept an integer n as input and must print yes if its binary representation has alternative 0's and 1's or else print no.
+example:
+input : 10
+output: YES
+INPUT:25
+OUTPUT: NO
+
+
+code:
+int main()
+{
+int n;
+scanf("%d",&n);
+int r,h=0,flag=0;
+while(n!=0)
+{
+r=n%2;
+if(h>0 && prev==r)
+{
+printf("NO");
+flag=1;
+break;
+}
+h++;
+n=n/2;
+}
+if(flag==0)
+{
+printf("YES");
+}
+}
