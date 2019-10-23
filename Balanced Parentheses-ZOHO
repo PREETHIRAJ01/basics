@@ -1,0 +1,72 @@
+Balanced Parentheses
+The program must accept a series of Parentheses as a string. 
+The program must print Valid if the parentheses are balanced.
+Else the program must print Invalid.
+Boundary Condition(s):1 <= Length of string <= 1000
+Input Format:The first line contains the string.
+Output Format:
+The first line contains Valid or Invalid.
+Example Input/Output 1
+:Input:
+(( ))
+Output:
+ValidExample Input/Output 2:
+Input:(( ( ))
+Output:Invalid
+
+code:
+#include<stdio.h>
+#include <stdlib.h>
+int main()
+{
+char s[1000],s1[1000];
+scanf("%[^\n]s",s);
+int i=0,top=-1;
+while(s[i]!='\0')
+{ 
+if(s[i]=='(')
+{ 
+top++;
+}
+if(s[i]==')')
+{
+if(top>=0)
+{ top--; 
+} 
+else 
+{ 
+printf("Invalid"); 
+return; 
+} 
+} 
+i++;
+}
+printf(top==-1?"Valid":"Invalid");
+}
+
+
+
+without stack(one test case is failing):
+#include<stdio.h>
+#include <stdlib.h>
+int main()
+{
+char s[1000],s1[1000];
+scanf("%[^\n]s",s);
+int i=0,open=0,close=0;
+while(s[i]!='\0')
+{ if(s[i]=='(') 
+{ open++;
+} 
+if(s[i]==')')
+{
+close++;
+} 
+i++;
+}
+if(open==close)
+{ printf("Valid");
+}
+else{ printf("Invalid");
+}
+}
