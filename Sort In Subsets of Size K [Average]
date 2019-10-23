@@ -1,0 +1,39 @@
+Given N numbers, the program must sort within subsets of size K. 
+That is every K numbers must be sorted among themselves. 
+(The last subset may not have K numbers in certain cases,
+but the program must sort them too)
+Input Format:The first line contains N and K separated by space.
+The second line contains N numbers separated by space.
+Output Format:The first line contains N numbers sorted in subsets of size K.
+Boundary Conditions:2 <= N <= 9999Value of a given number is from -99999 to 99999
+Example Input/Output 1:
+Input:
+11 3
+880 111 1440 1326 1892 -365 -761 -489 -131 1199 324
+Output:
+111 880 1440 -365 1326 1892 -761 -489 -131 324 1199
+
+code:
+int n,k;
+scanf("%d%d",&n,&k);
+int i,j,h,a[n];
+for(i=0;i<n;i++)
+scanf("%d",&a[i])
+
+for(i=0;i<n;i=i+k)
+{
+  for(j=i;j<(i+k) && j<n;j++)
+  {
+    for(h=i+1;h<(i+k) && j<n;h++)
+    {
+    if(a[j]>a[h])
+    {
+    temp=a[j];
+    a[j]=a[h];
+    a[h]=temp;
+    }
+    }
+  }
+}
+for(i=0;i<n;i++)
+printf(" %d",a[i]);
