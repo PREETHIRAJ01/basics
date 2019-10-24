@@ -1,0 +1,70 @@
+input:4
+output:
+* * * +
+# * + +
+# # - +
+# - - -  
+
+#include<stdio.h>
+#include <stdlib.h>
+int main()
+{
+int n,i,j,k ;
+scanf("%d",&n);
+k=n-1 ;
+for(i=0;i<n/2;i++)
+{ 
+for(j=0;j<i;j++)
+printf("# ");
+for(j=0;j<k;j++) 
+printf("* "); 
+for(j=0;j<=i;j++)
+printf("+ "); 
+printf("\n"); 
+k=k-2;}k=1 ;
+for(i=0;i<n/2;i++)
+{ 
+for(j=i;j<n/2;j++)
+printf("# "); 
+for(j=0;j<k;j++) 
+printf("- "); 
+for(j=i+1;j<n/2;j++) 
+printf("+ "); 
+printf("\n"); 
+k=k+2 ;
+}
+}  
+or
+int main(int argc, char** argv)
+{
+int n; cin >> n;
+int stars = n - 1; 
+int plus = 1; int hash = 0; 
+for(int i = 1; i <= n/2; i++)
+{
+for(int j = 0; j < hash; j++)
+cout << "# "; for(int j = 0; j < stars; j++) 
+cout << "* "; for(int j = 0; j < plus; j++)
+cout << "+ "; 
+hash++;
+stars -= 2;
+plus++; 
+cout << '\n';
+} 
+int minus = 1;
+plus -= 2;
+for(int i = 1; i <= n/2; i++)
+{
+for(int j = 0; j < hash; j++)
+cout << "# ";
+for(int j = 0; j < minus; j++)
+cout << "- ";
+for(int j = 0; j < plus; j++) 
+cout << "+ "; 
+hash--; 
+minus += 2;
+plus--; 
+cout << '\n'; 
+}
+return 0;
+  
