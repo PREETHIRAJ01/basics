@@ -1,0 +1,81 @@
+A string value S is passed as the input. 
+The program must print the first letter of each word in S in upper case.
+Input Format:First line will contain the string value S
+Output Format:First line will contain the string value with the first letter of each word in S in upper case.
+Boundary Conditions:Length of S is from 5 to 500
+Example Input/Output 1:Input:
+She is happy.
+Output:
+She Is Happy.
+Example Input/Output 2:
+Input:joIN tHE ParTY
+Output:JoIN THE ParTY
+
+
+CODE:
+#include<stdio.h>
+#include <stdlib.h>
+int main()
+{ 
+char s[500]; 
+scanf("%[^\n]s",s);
+int i=0,k=0;
+while(s[i]!='\0') 
+{ 
+if(i==0)
+{ if(s[0]>='a' && s[0]<='z') 
+{ 
+printf("%c",s[i]-32);
+} 
+else 
+{ 
+printf("%c",s[i]);
+}
+} 
+if(i!=0 && s[i-1]==' ' &&((s[i]>='a'&& s[i]<='z')|| (s[i]>='A'&& s[i]<='Z')))
+{ 
+if(isupper(s[i]))
+{
+printf("\t"); 
+printf("%c",s[i]);
+}
+else
+{
+printf("\t"); 
+printf("%c",s[i]-32);
+} 
+}
+else if(i!=0 &&s[i-1]!=' ' &&((s[i]>='a' && s[i]<='z') ||(s[i]>='A' && s[i]<='Z')) )
+{ 
+printf("%c",s[i]); 
+} 
+else if(s[i]==' ')
+{
+printf(" ");
+}
+i++; 
+}}
+
+
+
+using pointers:
+#include <stdio.h>
+int main()
+{
+char input[500]; 
+fgets(input,500,stdin);
+char *ptr=input;
+char prevChar=input[0]; 
+while(*ptr != '\n' && *ptr != '\r')
+{
+char toPrint = *ptr; /* 
+If previous character is blank or it is the first letter of the string then convert to upper case*/ 
+if(prevChar == ' ' || ptr == input)
+{ toPrint = toupper(*ptr);
+}
+printf("%c",toPrint); 
+prevChar=*ptr;
+ptr++; 
+}
+}
+
