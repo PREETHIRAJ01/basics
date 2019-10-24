@@ -1,0 +1,30 @@
+
+print the middle three characters:
+input:
+surrender
+output:
+ren
+
+MY CODE:
+
+char s[100];
+scanf("%s",s);
+int l=strlen(s)/2;
+for(int i=l-1;i<=l+1;i++)
+printf("%c",s[i]);
+
+
+CODE:(SKILLRACK SOLUTION)
+#include <stdio.h>
+int main()
+{ 
+char input[100]; 
+fgets(input,100,stdin); 
+int length=0;
+char *ptr = input; 
+while(*ptr != '\n' && *ptr != '\r')
+{ 
+length++;
+ptr++; 
+} 
+printf("%c%c%c",input[length/2 - 1],input[length/2],input[length/2 + 1]);}
