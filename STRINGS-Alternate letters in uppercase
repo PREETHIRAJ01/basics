@@ -1,0 +1,45 @@
+A string S (only alphabets) is passed as input.
+The printed output should contain alphabets in odd positions in each word in uppercase and alphabets in 
+even positions in each word in lowercase.Input Format:The first line will contain S.
+Output Format:The first line will contain the resultant string value based on the conditions provided.
+Boundary Conditions:
+Length of S is from 3 to 100.
+Example Input/Output 1:
+Input:tREE GiVES us fruiTS
+Output:TrEe GiVeS Us FrUiTs
+Example Input/Output 2:
+Input:FLoweR iS beauTIFUL
+Output:FlOwEr Is BeAuTiFuL
+
+
+
+code:
+#include <stdio.h>
+int main()
+{ 
+char input[100]; 
+fgets(input,100,stdin);
+char *ptr = input;
+int offset; 
+char word[100];
+while(sscanf(ptr,"%s%n",word,&offset) == 1)
+{ 
+int index=1;
+int wordLength=strlen(word); 
+while(index <= wordLength)
+{ 
+char charToPrint; 
+if(index%2 != 0)
+{ 
+charToPrint = toupper(word[index-1]);
+}
+else
+{
+charToPrint = tolower(word[index-1]);
+} 
+printf("%c",charToPrint); 
+index++; } 
+printf(" "); //Space after each word.
+ptr+=offset;
+}
+}
