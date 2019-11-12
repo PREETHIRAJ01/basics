@@ -1,0 +1,156 @@
+Given two matrices mat1 and mat2 of size N x N of  elements. Given a value x. 
+The problem is to count all pairs from both matrices whose sum is equal to x.
+
+INPUT: The first line consists of an integer T i.e. the number of test cases.
+The first line of each test case contains Two Integer N , x  denoting the size of the square Matrix.
+Next 2*N lines contain N integers separated by space.
+
+
+OUTPUT: For each test case Print the count.
+
+Constraints:
+1<=T<=50
+1 <= N <= 50
+0 <= X <= 2000
+1<= A[i][j] , B[i][j] <= 1000
+
+Example:
+
+Input:
+
+1
+
+3 21
+
+1 5 6
+8 10 11
+15 16 18
+
+2 4 7
+9 10 12
+13 16 20
+
+Output:
+
+4
+
+Explanation: The pairs are : (1 , 20 ) , (5 , 16 ) , (8 ,13 ) ,( 11 , 10 )
+
+
+code:
+#include<stdio.h>
+
+int found(int s,int n,int b[][n],int x)
+{
+    int i,j,count=0;
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+           if(s+b[i][j]==x) // ADDING THE PASSED A ARRAY ELEMENT WITH THE EACH ELEMENT OF B ARRAY ELEMENT
+           {
+               count++;
+           }
+        }
+    }
+    return count;
+}
+
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    while(t--)
+    {
+        int n,x;
+        scanf("%d%d",&n,&x);
+        int a[n][n],b[n][n],i,j,k,h,c=0;
+        for(i=0;i<n;i++)
+        {
+            for(j=0;j<n;j++)
+            {
+             scanf("%d",&a[i][j]);   
+            }
+        }
+        for(i=0;i<n;i++)
+        {
+            for(j=0;j<n;j++)
+            {
+             scanf("%d",&b[i][j]);
+            }
+        }
+         for(i=0;i<n;i++)
+        {
+            for(j=0;j<n;j++)
+            {
+                int s=found(a[i][j],n,b,x);// PASSING EACH ELEMENT OF A[][] ARRAY ,N,B ARRAY AND X
+                if(s>0)
+                {
+                    c=c+s;
+                }
+            }
+            
+        }
+        printf("%d\n",c);
+        
+        
+    }
+}
+
+
+or
+
+
+int main()
+{
+	int n,m,i,j,k,l,p,r,c,x;
+	scanf("%d",&p);
+	while(p--)
+	{
+	    scanf("%d %d",&n,&x);
+	    int t[n][n],u[n][n];
+	    for(i=0;i<n;i++)
+	    {
+	       for(j=0;j<n;j++)
+	       {
+	            scanf("%d",&t[i][j]);
+	       }
+	    }
+
+	    for(i=0;i<n;i++)
+	    {
+	       for(j=0;j<n;j++)
+	       {
+	            scanf("%d",&u[i][j]);
+	       }
+	    }
+
+	    l=n*n;
+	    int a[l],b[l];  // STORING THE TWO DIMENSIONAL ARRAY ELEMENTS IN ONE D ARRAY (IE) A AND B ARRAY OF LENGTH N*N
+	    k=0;
+	    c=0;
+	    for(i=0;i<n;i++)
+	    {
+	       for(j=0;j<n;j++)
+	       {
+	            a[k]=t[i][j];
+	            b[k]=u[i][j];
+	            k++;
+
+	       }
+	    }
+	    for(i=0;i<l;i++)
+	    {
+	       for(j=0;j<l;j++)
+	       {
+
+	            if(a[i]+b[j]==x)
+	            {
+	                c++;
+	            }
+	       }
+	    }
+	    printf("%d\n",c);
+	}
+	return 0;
+}
