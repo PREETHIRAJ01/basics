@@ -1,0 +1,59 @@
+Given a MxN matrix, count the number of squares in the matrix.squaresinREct
+
+Input:
+
+The first line of input contains an integer T denoting the no of test cases. 
+Then T test cases follow. Each test case contains two space seperated integers M and N, denoting the size of the Matrix.
+Output:
+
+For each test output a single integer denoting the total number of squares.
+Constraints:
+
+1 <= T <= 102
+1 <= M,N <= 104
+
+Example:
+
+Input:
+
+2
+2 2
+4 3
+
+Output:
+
+5
+20
+
+
+note:
+refer this youtube link:
+
+Aptitude shortcut trick to count number of squares puzzle | Team MAST
+
+
+
+code:
+#include<stdio.h>
+
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    long long int n,m;
+    while(t--)
+    {
+        scanf("%lld%lld",&n,&m);
+        long long int i,j,sum=0;
+        for(i=n,j=m;i>=1,j>=1;i--,j--)
+        {
+            
+            sum=sum+(i*j);
+            if(i==1 || j==1)
+            {
+                break;
+            }
+        }
+        printf("%lld\n",sum);
+    }
+}
