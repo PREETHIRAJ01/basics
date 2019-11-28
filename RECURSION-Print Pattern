@@ -66,3 +66,30 @@ int main()
     printf("\n");
     }
 }
+with recursion:
+#include<stdio.h>
+int pattern(int n)
+{
+    if(n>0)
+    {
+      printf("%d ",n);
+      pattern(n-5);
+      printf("%d ",n);
+    }
+    else
+    printf("%d ",n);
+
+}
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    int n;
+    while(t--)
+    {
+        scanf("%d",&n);
+        pattern(n);
+        printf("\n");
+        
+    }
+}
