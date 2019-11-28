@@ -93,3 +93,26 @@ int main()
         
     }
 }
+
+
+
+check for ur understanding:
+int pattern(int n)
+{
+    if(n>0)
+    {
+      printf("first-%d ",n);
+      pattern(n-5);
+      printf("second-%d ",n);
+    }
+    else
+    printf("third-%d ",n);
+
+}
+For Input:
+2
+16
+10
+Your Output is:
+first-16 first-11 first-6 first-1 third--4 second-1 second-6 second-11 second-16 
+first-10 first-5 third-0 second-5 second-10 
