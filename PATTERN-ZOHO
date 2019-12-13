@@ -1,0 +1,43 @@
+input n=6;
+
+
+1 7 12 16 19 21
+ 2 8 13 17 20
+  3 9 14 18
+   4 10 15
+    5 11
+     6
+     
+     input n=3
+     1 4 6 
+      2 5 
+       3 
+   
+ 
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    int i,j,k=1,space=1,s=1,temp=n,h=0;
+    for(i=n;i>=1;i--)
+    {
+        k=s;
+        temp=n;
+        for(j=1;j<=i;j++)
+        {
+           printf("%d ",k);
+           k=k+temp;
+           temp--;
+        }
+        printf("\n");
+        for(h=0;h<space;h++)
+        {
+            printf(" ");
+        }
+        
+        space++;
+        s++;
+    }
+}
