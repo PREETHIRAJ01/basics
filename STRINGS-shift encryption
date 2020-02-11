@@ -1,0 +1,78 @@
+Anmol wants to encrypt the message M which is to be sent to his business partner Binamol.
+So he shifts every alphabet by X positions in forward direction and he adds Y to every number in the message.
+Given a string value M of the message and the values of X and Y, the program must print the encrypted message E.
+- All the alphabets will be in lower case.- Spaces and special characters in the message M should be
+reproduced as such in the encrypted message E.Input Format:First line will contain the string value MSecond line will
+contain the integer value of XThird line will contain the integer value of YOutput Format:First line will contain the
+string value of the encrypted message E.Constraints:Length of M is from 2 to 100.
+0 <= X <= 100 <= Y <= 9
+Sample Input/Output:
+Example 1:
+Input:call me at 10 p.m21
+Output:ecnn og cv 21 r.o
+Example 2:
+Input:
+credit 1 lakh30
+Output:fuhglw 1 odnkMax
+Execution Time Limit: 5000 millisecs
+
+code:
+#include<stdio.h>
+#include <stdlib.h>
+int main()
+{ 
+char s[100]; 
+scanf("%[^\n]s",s); 
+int a,n; 
+scanf("%d\n%d",&a,&n);
+int l=strlen(s),i; 
+for(i=0;i<l;i++)
+{ 
+if(s[i]>='a' && s[i]<='z') 
+{ 
+printf("%c",((s[i]+a-97)%26)+97);
+}
+else if(s[i]>='0' && s[i]<='9') 
+{ 
+printf("%d",((s[i]-48)%10)+n);
+} 
+else { printf("%c",s[i]); 
+}
+}
+}
+
+
+or
+skillracks'S code:
+#include <stdio.h>int main()
+{ 
+char msg[100];
+fgets(msg,100,stdin);
+char *ptr = msg; 
+int X,Y; 
+scanf("%d%d",&X,&Y);
+char current; 
+while(*ptr != '\r' && *ptr != '\n' && *ptr != '\0')
+{
+current = *ptr;
+if(isalpha(current)) 
+{ 
+char modified = current+X; 
+if(modified - 'z' > 0)
+{
+char toprint = 'a'+ (modified-'z')-1;
+printf("%c",toprint); }
+else
+{ printf("%c",modified);
+} 
+} 
+else if(isdigit(current))
+{ 
+int currentdigit = current - '0'; 
+printf("%d",currentdigit+Y); 
+}
+else
+{ printf("%c",current); 
+} ptr++;
+}
+}
