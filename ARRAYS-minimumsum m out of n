@@ -1,0 +1,62 @@
+Given N positive integers, 
+find the minimum sum S that can be obtained by adding exactly M out of the N integers.
+The program must print the value of the minimum sum S.
+Input Format:The first line will contain N and M separated by a space.
+The second line will contain the values of N positive integers separated by a space.
+Output Format:First line will contain S.
+Boundary Conditions:
+3 <= N <= 50
+2 <= M <= N
+Example Input/Output 1:Input:
+5 2
+9 2 1 5 4
+Output:
+3
+Explanation:Out of the five given numbers,
+the sum of 1+2 = 3 is the least sum and hence printed as the output.
+Max Execution Time Limit: 5000 millisecs
+
+
+
+my approach:
+
+1.get the inputs
+2.sort the array in ascending order
+3.add the first m elements from the array 
+  that gives the minimum sum from set of positive integers n
+
+
+
+code:
+#include<stdio.h>
+#include <stdlib.h>
+int sort(int a[],int n)
+{ 
+int i,j; 
+for(i=0;i<n;i++)
+{ 
+for(j=0;j<n;j++) 
+{
+if(a[i]>a[j]) 
+{
+int temp=a[i];
+a[i]=a[j]; 
+a[j]=temp;
+}
+}
+}
+}
+int main()
+{ 
+int n,m; 
+scanf("%d%d",&n,&m); 
+int a[n];
+int i,j,minsum=0;
+for(i=0;i<n;i++) 
+scanf("%d",&a[i]);
+sort(a,n); 
+for(i=0;i<m;i++)
+minsum=minsum+a[i]; 
+
+printf("%d",minsum);
+}
