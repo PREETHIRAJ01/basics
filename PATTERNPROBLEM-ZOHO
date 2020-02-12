@@ -17,22 +17,28 @@ Output:
 2 5
 3
 
-CODE:
+
+
+#include <stdio.h>
+
+
 int main()
 {
 int n;
 scanf("%d",&n);
-int i,j,init,h=1,k=n;
-for(i=n;i>=i;i--)
+int k=n,i,j,count=1,h=1;
+for(i=n;i>=1;i--)// np of rows to print
 {
-init=h;
-for(j=1;j<=i;j++)
-{
-printf("%d",j);
-j=j+h;
-k--;
-}
-h=init+1;
-k=n;
+     count=h;   
+    for(j=1;j<=i;j++)no of columns to print
+    {
+        printf("%d ",count);
+        count=count+k;
+        k--;
+        
+    }
+    k=n;
+    h=h+1;;
+    printf("\n");
 }
 }
