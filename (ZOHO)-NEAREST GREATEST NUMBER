@@ -25,7 +25,7 @@ int main()
     int n;
     scanf("%d",&n);
     int a[n];
-    int i,j=0,min=1000,max=0,sub=1000,next;
+    int i,j=0,max=0,sub=1000,next;
     for(i=0;i<n;i++)
     {
     scanf("%d",&a[i]);
