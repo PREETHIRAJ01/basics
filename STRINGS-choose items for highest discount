@@ -1,0 +1,91 @@
+code:
+Chandru went for shopping and he was offered N number of items at various discount percentage rates.
+Out of these N items he wants to choose N-1 items such that the amount he saves is maximum.
+The program must print the item which is to be left out.Input Format:First line will contain the value of N - number of 
+itemsN lines containing item name, label price and the discount percentage separated by one or more spaces.
+Output Format:The name of the item which is not to be purchased as it offers least discount.
+Boundary Conditions:2 <= N <= 20
+The length of the item name string value is from 1 to 100.
+The price of the item is from 1 to 999999
+Example Input/Output 1:Input:
+3
+harddisk 4000 20
+monitor 15000 10
+laptop 30000 5
+Output:harddisk
+Explanation:harddisk savings = 800, monitor savings = 1500, laptop savings = 1500. 
+Hence harddisk is offering least savings and is to be left out.
+Max Execution Time Limit: 5000 millisecs
+
+
+approach:
+1.get the inputs as string,int and int
+2.calculate the savings
+3.if the savings is lesser than the minsavings
+  assign savings to minsavings
+  copy the string s(item) to temp
+4.finally display the item which is in temp.
+
+
+my code:
+#include<stdio.h>
+#include <stdlib.h>
+#include<string.h>
+int main()
+{
+int n;
+scanf("%d",&n);
+char s[100]; 
+char temp[100];
+int amount,discount,minsavings=1000000,savings;
+int i=0;
+while(n--) 
+{ 
+while(scanf("%s\t%d\t%d",s,&amount,&discount)>0)
+
+{ 
+savings=(amount/100)*discount;
+if(savings<minsavings) 
+{ 
+strcpy(temp,s);
+minsavings=savings; 
+} 
+}
+} 
+printf("%s",temp);
+}
+
+
+code solution provided by skillrack:
+#include <stdio.h>
+int main()
+{
+int N;
+scanf("%d",&N);
+char itemName[100];
+int price;
+int discount;
+int lowestDiscount=0;
+char lowestDiscountItemName[100];
+int counter=0;
+while(counter < N)
+{
+scanf("%s%d%d",itemName,&price,&discount);
+int currentItemDiscount = price * discount/100;
+if(counter == 0)
+{
+lowestDiscount = currentItemDiscount;
+strcpy(lowestDiscountItemName,itemName);} 
+else 
+{
+if(currentItemDiscount < lowestDiscount)
+{
+lowestDiscount = currentItemDiscount;
+strcpy(lowestDiscountItemName,itemName);
+}
+}
+counter++;
+}
+//end of while
+puts(lowestDiscountItemName);
+}
