@@ -1,0 +1,64 @@
+A string S is passed as the input. 
+The program must reverse the order of the words in the string and print them as the output.
+Input Format:The first line will contain S.
+Output Format:
+The first line will contain the words in the string S in the reverse order.
+Boundary Conditions:
+Length of S is from 5 to 100.
+Example Input/Output 1:
+Input:
+Today is Friday
+Output:Friday is Today
+Example Input/Output 2:
+Input:
+five six ten eleven
+Output:
+eleven ten six five
+
+
+CODE:
+#include<stdio.h>
+#include <stdlib.h>
+int main()
+{ 
+char s[20][100];
+int i=0; 
+while(scanf("%s",&s[i])>0)
+{ 
+i++;
+} 
+for(int j=i-1;i>=0;i--)
+printf("%s",s[i]);
+}
+
+
+solution by skillrack:
+#include <stdio.h>
+int main()
+{
+char input[100];
+fgets(input,100,stdin);
+char *ptr = input;
+int offset=0;
+int wordcount=0;
+char currentword[100];//Count the number of words.
+while(sscanf(ptr,"%s%n",currentword,&offset) == 1) 
+{
+wordcount++;
+ptr+=offset;
+}/*Declare an array to hold the words. Max length of a word is assumed to be the max length of the input string. 
+*/
+char words[wordcount][100];
+int index=0;ptr = input;
+while(sscanf(ptr,"%s%n",currentword,&offset) == 1) 
+{
+strcpy(words[index],currentword);
+ptr+=offset;
+index++;
+}
+//Print the words in the reverse order.index=wordcount-1;
+while(index >= 0) 
+{
+printf("%s ",words[index]);
+index--;
+}
