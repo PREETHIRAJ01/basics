@@ -35,7 +35,54 @@ The output is 9 9 9 2 5.
  
 
 
+my approach:
+1.get the iput from the user
+2.create three arrays
+a[n]-->store the input
+f[60]-->frequency array
+b[n]-->array to store the elements from the input array a[n] without duplicates
+max=0
 
+3.calculate the max value when you get the iput from user.
+
+4. find the frequrency of elements store it in f[60] array
+    f[a[i]]
+    
+5. now storing elements in b[n] array
+   k=0;
+   run a loop from i=0 to i=max
+        if(f[i])
+        {
+        b[k++]=i;
+        }
+    if the frequency value exits store it the corresponding i value in b array
+6.sorting takes place in b array:
+      for(i=0;i<k;i++)
+        {
+            for(j=i+1;j<k;j++)
+            {
+                if(f[b[i]]==f[b[j]])
+               {
+                   if(b[i]>b[j])
+                   {
+                       temp1=b[i];
+                       b[i]=b[j];
+                       b[j]=temp1;
+                       
+                   }
+                 }
+               
+                
+               if(f[b[i]]<f[b[j]])  
+               {
+                   
+                   temp1=b[i];
+                   b[i]=b[j];
+                   b[j]=temp1;
+               }
+            }
+        }
+7. print the values based on frequency:
 
 
 CODE:
