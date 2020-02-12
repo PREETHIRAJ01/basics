@@ -1,0 +1,28 @@
+/*
+input:
+n=6
+5 8 10 13 6 2
+3(threshold value)
+output:
+17
+explanation:
+5     parts-> 3 2    count-->2
+*/
+#include<stdio.h>
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    int a[n],count=0,t,i,j;
+    for(i=0;i<n;scanf("%d",&a[i++]));
+    scanf("%d",&t);
+    for(i=0;i<n;i++)
+    {
+        count=count+(a[i]/t)+(a[i]%t==0?0:1);
+    }
+    printf("%d",count);
+}
+
+
+
+
