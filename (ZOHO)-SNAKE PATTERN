@@ -1,0 +1,60 @@
+code:
+/*
+input:
+n=5
+    1 2 3 4 5
+   10 9 8 7 6 
+  11 12 13 14 15
+ 20 19 18 17 16 
+21 22 23 24 25
+*/
+input n=7;
+        1 2 3 4 5 6 7 
+     14 13 12 11 10 9 8 
+    15 16 17 18 19 20 21 
+   28 27 26 25 24 23 22 
+  29 30 31 32 33 34 35 
+ 42 41 40 39 38 37 36 
+43 44 45 46 47 48 49
+#include<stdio.h>
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    int i,j,count=1,s=(n*2)-1,h=n-1,space;
+    for(i=1;i<=n;i++)
+    {
+        if(i%2!=0)
+        {
+           for(space=1;space<=h;space++)
+           {
+               printf(" ");
+           }
+            for(j=h+1;j<=s;j++)
+            {
+            printf("%d ",count);
+            count++;
+            
+            }
+        count=(count-1)+n;
+        }
+        if(i%2==0)
+        {
+            for(space=1;space<=h;space++)
+           {
+               printf(" ");
+           }
+            for(j=h+1;j<=s;j++)
+            {
+            printf("%d ",count);
+            count--;
+            }
+           count=(count+1)+n; 
+        }
+        s--;
+        h--;
+        
+        printf("\n");
+    }
+}
+
