@@ -1,0 +1,128 @@
+Given three strings s1,s2,s3.Remove commonly occurring words or sentences in all the three strings.
+
+s1 = "Everyday I do exercise if"
+s2 = "Sometimes I do exercise if i feel stressed"
+s3 = "Mostly I do exercise on morning"
+
+Output:
+s1 = "Everyday if"
+s2 = "Sometimes if i feel stressed"
+s3 = "Mostly on morning"
+
+
+code:
+#include <stdio.h>
+#include<string.h>
+int main()
+{
+   char s1[100],s2[100],s3[100];
+   int i=0,j=0,k=0;
+   char temp[10][100],temp1[10][100],temp2[10][100];
+   
+  fgets(s1,sizeof(s1),stdin);//getting input through fgets
+  fgets(s2,sizeof(s2),stdin);
+  fgets(s3,sizeof(s3),stdin);
+   
+   for(i=0;i<strlen(s1);i++)
+   {
+       if(s1[i]>='a' && s1[i]<='z' || s1[i]>='A' && s1[i]<='Z')
+       {
+           temp[j][k++]=s1[i];
+       }
+       temp[j][k]='\0';
+       if(s1[i]==' ')
+       {
+           j++;
+           k=0;
+       }
+   }
+   int t1=j;
+   j=0,k=0;
+   for(i=0;i<strlen(s2);i++)
+   {
+       if(s2[i]>='a' && s2[i]<='z' || s2[i]>='A' && s2[i]<='Z')
+       {
+           temp1[j][k++]=s2[i];
+       }
+       temp1[j][k]='\0';
+       if(s2[i]==' ')
+       {
+           j++;
+           k=0;
+       }
+   }
+   int t2=j;
+   j=0,k=0;
+    for(i=0;i<strlen(s3);i++)
+   {
+       if(s3[i]>='a' && s3[i]<='z' || s3[i]>='A' && s3[i]<='Z')
+       {
+           temp2[j][k++]=s3[i];
+       }
+       temp2[j][k]='\0';
+       if(s3[i]==' ')
+       {
+           j++;
+           k=0;
+       }
+   }
+   int t3=j;
+   
+   for(i=0;i<=t1;i++)
+   printf("%s ",temp[i]);
+   printf("\n");
+   for(i=0;i<=t2;i++)
+   printf("%s ",temp1[i]);
+   printf("\n");
+   for(i=0;i<=t3;i++)
+   printf("%s ",temp2[i]);
+   printf("\n");
+   
+   int flag=0;
+   for(i=0;i<=t1;i++)
+   {
+       flag=0;
+       for(j=0;j<=t2;j++)
+       {
+           if(strcmp(temp[i],temp1[j])==0)
+           {
+               flag=1;
+               for(k=0;k<=t3;k++)
+               {
+                   if(strcmp(temp1[j],temp2[k])==0)
+                   {
+                       flag=3;
+                       strcpy(temp2[k],"*");
+                       break;
+                   }
+               }
+               if(flag==3)
+               strcpy(temp1[j],"*");
+               break;
+           }
+           
+       }
+       if(flag==3)
+           strcpy(temp[i],"*");
+   }
+   
+    for(i=0;i<=t1;i++)
+    {
+    if(strcmp(temp[i],"*")!=0)
+     printf("%s ",temp[i]);
+    }
+   printf("\n");
+   for(i=0;i<=t2;i++)
+   {
+   if(strcmp(temp1[i],"*")!=0)
+   printf("%s ",temp1[i]);
+   }
+   printf("\n");
+   for(i=0;i<=t3;i++)
+   {
+   if(strcmp(temp2[i],"*")!=0)
+   printf("%s ",temp2[i]);
+   }
+   
+   
+}
