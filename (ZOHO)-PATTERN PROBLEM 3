@@ -130,3 +130,25 @@ h=h+1;
 printf("\n");
 }
 }
+OR
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+int N;
+scanf("%d",&N); 
+int row=1; 
+while(row <= N)
+{
+int col=0;
+int printvalue=row;
+while(col <= (N-row))
+{
+printf("%d ",printvalue);
+printvalue += N-col; 
+col++;
+} 
+printf("\n");
+row++; 
+}
+}
