@@ -52,3 +52,36 @@ else if(s[diff1]!=s[diff2])
 printf("NO"); 
 }
 }
+
+or 
+code2(skillrack solution)
+
+#include <stdio.h>
+int main()
+{
+char input[100];
+scanf("%s",input);
+int len = strlen(input);
+int X,Y;
+scanf("%d%d",&X,&Y);
+int effectiveX, effectiveY;
+//As the index starts from zero.
+effectiveX = X-1;
+effectiveY = Y-1;
+if(effectiveX >= len)
+{
+effectiveX = effectiveX%len;
+}
+if(effectiveY >= len) 
+{
+effectiveY = effectiveY%len;
+}
+if(input[effectiveX] == input[effectiveY])
+{
+printf("YES");
+}
+else 
+{
+printf("NO");
+}
+}
