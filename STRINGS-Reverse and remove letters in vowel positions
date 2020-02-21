@@ -1,0 +1,92 @@
+Sharon does not like vowels.
+So she wants to remove vowels from any string. 
+But her friend Jennie loves vowels and wants to retain vowels in as string.
+So both discuss and agree to the following condition.-
+They will reverse the string value and then remove the letters
+in the positions of the vowels in the original string.
+Help them by writing the program implementing the above condition.
+Input Format:
+First line will contain the string value S.Output Format:First line will contain the reversed string
+value with the letters in the positions of vowels in the original string removed.Constraints:Length of String S is from 2 to 50.
+Sample Input/Output:
+Example 1:Input:
+environment
+Output:
+nenrine
+Explanation:
+The reversed string value is tnemnorivne.
+The vowels position in the original string are e-1 i-4 o-6 e-9Hence after removing the letters in the positions 1,4,6,9 the string is nenrineExample 2:Input:pondOutput:dopExplanation:The reversed string value is dnop.The vowels position in the original string are 
+o-2Hence after removing the letters in the positions 2 the string is dop
+Max Execution Time Limit: 5000 millisecs
+cod1:
+
+
+#include<stdio.h>
+#include <stdlib.h>
+int main()
+{
+char s[50];
+scanf("%s",s);
+int l=strlen(s);
+int i,j=l;
+for(i=0;i<=l/2;i++)
+{
+if((s[i]=='a' || s[i]=='e' || s[i]=='i' || s[i]=='o' || s[i]=='u' )&&
+(s[j-i-1]=='a' || s[j-i-1]=='e' || s[j-i-1]=='i' || s[j-i-1]=='o' || s[j-i-1]=='u')) 
+{
+s[i]='*'; 
+s[j-i-1]='*';
+}
+else if((s[i]=='a' || s[i]=='e' || s[i]=='i' || s[i]=='o' || s[i]=='u') 
+&&
+(s[j-i-1]!='a' || s[j-i-1]!='e' || s[j-i-1]!='i' || s[j-i-1]!='o' || s[j-i-1]!='u') )
+{
+s[j-i-1]='*';
+}
+if((s[j-i-1]=='a' || s[j-i-1]=='e' || s[j-i-1]=='i' || s[j-i-1]=='o' ||s[j-i-1]=='u') 
+&& (s[i]!='a' || s[i]!='e' || s[i]!='i' || s[i]!='o' || s[i]!='u')) 
+{ 
+s[i]='*'; 
+}
+}
+for(i=l-1;i>=0;i--) 
+{
+if(s[i]!='*')
+printf("%c",s[i]);
+}
+}
+
+
+
+code2:
+#include <stdio.h>
+int main()
+{
+char input[50];
+scanf("%s",input); 
+//Now reverse the string char revstr[50];
+int len=strlen(input);
+int index = len-1;
+int copyindex = 0; 
+while(index >= 0) 
+{
+revstr[copyindex] = input[index];
+index--; 
+copyindex++;
+}
+//Now print for the given logic 
+index = 0; 
+while(index < len) 
+{
+char ch = toupper(input[index]); 
+if(ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U') 
+{
+//Do not print
+}
+else
+{
+printf("%c",revstr[index]);
+}
+index++;
+}
+}
