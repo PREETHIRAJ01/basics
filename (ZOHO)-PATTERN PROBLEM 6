@@ -1,0 +1,95 @@
+******************************************************************************
+
+PATTERN:
+Print the word with odd letters as
+Pattern :
+P   M
+R  A
+O R
+G
+O R
+R  A
+P   M
+
+
+
+string: GEEKSFORGEEKS
+G      S
+E     K
+E    E
+K   E
+S  G
+F R
+O
+F R
+S  G
+K   E
+E    E
+E     K
+G      S
+
+
+
+
+MY LOGIC:
+1.THE SPACES NUMBERED FROM HALF OF THE STRING LENGTH TO 1
+2. PRINTING TH FIRST HALF
+3.PRINTING THE SECOND HALF
+*******************************************************************************/
+#include <stdio.h>
+#include<string.h>
+int main()
+{
+  char s[100];
+  scanf("%s",s);
+  printf("string: %s\n",s);
+  int i,j,count=strlen(s)/2,space;
+   int value1=strlen(s)/2-1;
+     int value2=strlen(s)/2+1;
+     int count1=1;
+  for(i=0;i<strlen(s);i++)
+  {
+     if(i<=strlen(s)/2)
+     {
+      printf("%c",s[i]);
+      
+      for(space=0;space<=count;space++)
+      {
+          if(space<count)
+          {
+              printf(" ");
+          }
+          if(space==count && i!=strlen(s)/2)
+          {
+              printf("%c",s[strlen(s)-i-1]);
+          }
+      }
+      count--;
+     }
+    
+     if(i>strlen(s)/2)
+     {
+         printf("%c",s[value1]);
+         for(space=0;space<=count1;space++)
+         {
+             if(space<count1)
+             {
+                 printf(" ");
+             }
+             if(space==count1)
+             {
+                 printf("%c",s[value2]);
+             }
+         }
+         count1++;
+         value1--;
+         value2++;
+     }
+     printf("\n");
+  }
+ 
+  
+}
+   
+   
+   
