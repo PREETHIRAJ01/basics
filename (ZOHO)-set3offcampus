@@ -1,0 +1,365 @@
+/******************************************************************************
+
+input:
+abbbbbbbbbbbcc
+output:
+a1b11c2
+
+input:
+abbbc
+output:
+a1b3c1
+
+*******************************************************************************/
+#include <stdio.h>
+#include<string.h>
+int main()
+{
+   char s[100];
+   scanf("%s",s);
+   int i,count=1;
+   for(i=0;i<strlen(s);i++)
+   {
+       if(s[i]==s[i+1])
+       {
+           count++;
+       }
+       if(s[i]!=s[i+1])
+       {
+           printf("%c%d",s[i],count);
+           count=1;
+       }
+   }
+
+    return 0;
+}
+*****************************************************************************************************
+
+input:
+a1b10
+output:
+abbbbbbbbbb
+
+number ranges from 1 to 99  
+
+
+
+#include<stdio.h>
+
+#include<string.h>
+
+int main()
+
+{
+
+char a[100],t;
+
+int i,j,x,f;
+
+printf("Enter the string:");
+
+scanf("%s",&a);
+
+for(i=0;i<strlen(a);i=i+2)
+
+{
+
+t=a[i];
+
+if((a[i+2]-48)>=0 && (a[i+2]-48)<=9)
+
+{
+
+int x;
+
+x=((a[i+1]-48)*10)+(a[i+2]-48);
+
+for(f=0;f<x;f++)
+
+{
+
+printf("%c",t);
+
+}
+
+i++;
+
+}
+
+else
+
+{
+
+for(j=0;j<a[i+1]-48;j++)
+
+{
+
+printf("%c",t);
+
+}
+
+}
+
+}
+
+return 0;
+
+}
+
+
+*********************************************************************************************************
+/******************************************************************************
+
+input:
+geeksforgeeks
+output:
+g           s
+ e         k
+  e       e
+   k     e
+    s   g
+     f r
+      o
+     f r
+    s   g
+   k     e
+  e       e
+ e         k
+g           s
+
+
+input:
+12345
+output:
+1   5
+ 2 4
+  3
+ 2 4
+1   5
+
+
+#include <stdio.h>
+#include<string.h>
+int main()
+{
+   char s[100];
+   scanf("%s",s);
+   int i,count=strlen(s)-1,space;
+   int value1=(strlen(s)/2)-1;
+       int value2=(strlen(s)/2)+1;
+   for(i=0;i<strlen(s);i++)
+   {
+       if(i<=strlen(s)/2)//till half
+       {
+       for(space=0;space<=i;space++)
+       {
+           if(space<i)
+           {
+           printf(" ");
+           }
+           if(space==i)// i==0 i==1 i==2
+           {
+               printf("%c",s[i]);
+           }
+       }
+       for(space=i+1;space<=count;space++)// other side
+       {
+           if(space<count)
+           {
+           printf(" ");
+           }
+           if(space==count)// i==4 i==3 i==2
+           {
+               printf("%c",s[strlen(s)-i-1]);
+           }
+       }
+       count--;
+       }
+      
+       
+       if(i>strlen(s)/2)//second half
+       {
+           for(space=0;space<=value1;space++)
+           {
+               if(space<value1)
+               {
+                   printf(" ");
+               }
+               if(space==value1)
+               {
+                   printf("%c",s[value1]);
+               }
+           }
+           for(space=value1+1;space<=value2;space++)
+           {
+               if(space<value2)
+               {
+                   printf(" ");
+               }
+               if(space==value2)
+               {
+                  printf("%c",s[value2]); 
+               }
+           }
+           value1--;
+           value2++;
+       }
+       printf("\n");
+   }
+
+    return 0;
+}
+
+or(simple code)
+
+#include<stdio.h>
+
+#include<string.h>
+
+int  main()
+
+{
+
+int i,j,l;
+
+char a[100];
+
+scanf("%s",a);
+
+l=strlen(a);
+
+for(i=0;i<l;i++)
+
+{
+
+for(j=0;j<l;j++)
+
+{
+
+if(i==j)
+
+{
+
+printf("%c",a[i]);
+
+}
+
+else if(i+j==l-1 && i!=j)
+
+{
+
+printf("%c",a[j]);
+
+}
+
+else
+
+{
+
+printf(" ");
+
+}
+
+}
+
+printf("\n");
+
+}
+
+
+
+}
+
+
+
+/******************************************************************************
+
+input:
+5
+output:
+     0
+    101
+   21012
+  3210123
+ 432101234
+54321012345
+54321012345
+ 432101234
+  3210123
+   21012
+    101
+     0
+
+
+
+
+
+
+#include <stdio.h>
+#include<string.h>
+int main()
+{
+  int n;
+   scanf("%d",&n);
+   int i,j,space;
+   int count1=n,k,value=1;
+   int count2=n+1;
+   for(i=0;i<=n;i++)
+   {
+       k=i;
+       value=1;
+       
+       for(space=0;space<count1;space++)
+       {
+           
+               printf(" ");
+           
+       }
+       for(j=count1;j<=n;j++)
+       {
+           printf("%d",k);
+           k--;
+       }
+       for(j=n+1;j<count2;j++)
+       {
+           
+               printf("%d",value);
+               value++;
+          
+       }
+           
+          count1--;
+          count2++;
+      
+       printf("\n");
+   }
+   count1=n,k=n;;
+   count2=1;
+   int last=n*2;
+   for(i=0;i<=n;i++)
+   {
+       count1=k;
+       count2=1;
+       for(space=0;space<i;space++)
+       {
+           printf(" ");
+       }
+       for(j=i;j<=n;j++)
+       {
+           printf("%d",count1);
+           count1--;
+       }
+       for(j=n+1;j<=last;j++)
+       {
+           printf("%d",count2);
+           count2++;
+       }
+       k--;
+       last--;
+       printf("\n");
+   }
+
+    return 0;
+}
+
+*******************************************************************************/
