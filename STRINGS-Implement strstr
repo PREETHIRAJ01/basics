@@ -1,0 +1,133 @@
+Your task is to implement the function strstr. The function takes two strings as arguments (s,x) and  locates the occurrence of the string x in the string s. The function returns and integer denoting the first occurrence of the string x in s.
+
+Input Format:
+The first line of input contains an integer T denoting the no of test cases .
+Then T test cases follow. The first line of each test case contains two strings s and x.
+
+Output Format:
+For each test case, in a new line, output will be an integer denoting the first occurrence of the x in the string s.
+Return -1 if no match found.
+
+Your Task:
+Since this is a function problem, you don't have to take any input. Just complete the strstr() function. 
+The function returns -1 if no match if found else it returns an integer denoting the first occurrence of the x in the string s.
+
+Constraints:
+1 <= T <= 200
+1<= |s|,|x| <= 1000
+
+Example:
+Input
+2
+GeeksForGeeks Fr
+GeeksForGeeks For
+Output
+-1
+5
+
+Explanation:
+Testcase 1: Fr is not present in the string GeeksForGeeks as substring.
+Testcase 2: For is present as substring in GeeksForGeeks from index 5.
+ 
+
+
+
+
+MY APPROACH:
+   1. FIND THE STRING LENGTH OF TWO STRINGS AND STORE IT IN L AND L1
+   2.RUN A LOOP FROM 0 TO LENGTH OF THE FIRST STRING
+   3. IF THE CHARACTER OF THE FIRST STRING MATCHES WITH THE SECOND STRING
+        TURN FLAG TO 1;
+   4. IF ITS MATCHED NOW ENTER INTO THE INNER LOOP
+   5. IF THE J VALUE EQUALS TO L1(LENGTH OF THE SECOND STRING)
+       TURN FLAG1 TO 1;
+   6. IF BOTH THE FLAGS ARE 1
+       THEN BRERAK THE LOOPS RETURN THE INDEX
+    
+
+
+
+CODE:
+int strstr(string s, string x)
+{
+     int l=s.size(),l1=x.size();
+     int flag=0,flag1=0,i,j,index=-1;
+     for(i=0;i<l;i++)
+     { 
+         
+         if(s[i]==x[0])
+         {
+             flag=1;
+             for(j=0;j<l1;j++)
+             {
+                 if(s[i+j]!=x[j])
+                 {
+                  break;
+                 }
+             }
+             if(j==l1)
+             {
+                 flag1=1;
+             }
+         }
+         if(flag==1 && flag1==1)
+         {
+         index=i;
+         break;
+         }
+         
+         
+     }
+     return index;
+     
+     
+     
+}
+
+
+
+GEEKS FOR GEEKS SOLUTION:
+1.
+A simple solution is to one by one check every index of s1. For every index, check if s2 is present. O(n*m)
+
+For the efficient solution, we  can use KMP algorithm, Z algorithm, Rabin-Karp Algorithm
+
+
+
+class GfG
+{
+	
+	int strstr(String str, String target) {
+	    
+	    // if target string is empty
+        if (target.length() == 0){
+            return 0;
+        } 
+        
+        // brute force solution to iterate over the string
+        // and check if characters matches or not,
+        for (int i = 0; i < str.length(); i ++){ 
+            if (i + target.length() > str.length()){
+                return -1;
+            }
+            
+            for (int j = 0; j < target.length(); j ++){
+                
+                // if characters doesn't matches, then continue till
+                // you traversed whole string
+                if ( str.charAt(i + j) == target.charAt(j) ){
+                    if (j == (target.length() -1)){
+                        return i;
+                    }
+                }
+                else{
+                    break;
+                }
+             }
+        }
+        
+        // else if string is found, then return the starting index
+        // of the match
+        return -1;
+    }
+}
