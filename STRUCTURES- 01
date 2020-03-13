@@ -1,0 +1,41 @@
+/******************************************************************************
+Write a program to store and print the roll no., name , age and marks of a student using structures.
+
+*******************************************************************************/
+
+#include <stdio.h>
+
+struct student
+{
+    int rollno;
+    char name[100];
+    int age;
+    int marks;
+    
+};
+
+int main()
+{
+    struct student p1={0,"jesus",1000,100};
+    struct student p2= {1,"Brown",14,78};
+    printf("rollno         name        age     marks\n");
+    printf("%d%20s%10d%10d\n",p1.rollno,p1.name,p1.age,p1.marks);
+    printf("%d%20s%10d%10d\n",p2.rollno,p2.name,p2.age,p2.marks);
+
+    return 0;
+}
+OR
+#include <stdio.h>
+int main()
+{
+  struct student
+  {
+    int roll_no;
+    char name[30];
+    int age;
+    int marks;
+  };
+  struct student p1 = {1,"Brown",14,78};
+  printf("%d %s %d %d\n",p1.roll_no,p1.name,p1.age,p1.marks);
+  return 0;
+}
