@@ -1,0 +1,95 @@
+House Number
+Rahul is living in a colony containing 
+N
+ houses. He needs to label each house with a number from 
+1
+ to 
+N
+. Each house will be labelled with a distinct number. Rahul wants to know how many digits he will have to write down as he lables the houses.
+
+Input format
+The first line of the input contains integer 
+T
+, denoting the number of test cases.
+Each of the next 
+T
+ lines contains one integer denoting the value of 
+N
+.
+
+Output format
+Print the number of digits needed to number all the houses.
+
+Constraints
+1
+<=
+T
+<=
+23
+
+1
+<=
+N
+<=
+10
+9
+
+Time Limit
+1​second
+
+Example
+Input
+2
+
+12
+
+10
+
+Output
+15
+
+11
+
+Sample test case explanation
+1, 2, 3, 4, 5, 6,7, 8,9,10, 11, 12
+
+For first test case
+total digits 
+=
+15
+
+For second test case
+total digits 
+=
+11
+
+
+
+import java.util.*;
+import java.io.*;
+
+public class Main
+{
+  static long noofdigits(long n)
+  {
+    long  digits=0,i;
+    for(i=1;i<=n;i*=10)
+    {
+      digits=digits+(n-i+1);
+    }
+    return digits;
+  }
+  
+  public static void main(String args[]) throws IOException
+  {
+    Scanner sc=new Scanner(System.in);
+    long  t=sc.nextInt();
+    while(t-- >0)
+    {
+      long  n=sc.nextLong();
+      long  totaldigits=noofdigits(n);
+      System.out.println(totaldigits);
+    }
+    
+  }
+}
